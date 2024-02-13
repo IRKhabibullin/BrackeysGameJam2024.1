@@ -13,10 +13,11 @@ public class ShipMemberProfile
     ShipMemberSex shipMemberSex = ShipMemberSex.male;
     [SerializeField]
     int memberAge;
-    [Header(header: "Medical indicators")]
     [SerializeField] 
     int bloodType = 0;
-
+    [Header(header: "Medical indicators")]
+    [SerializeField]
+    int heartBeat;
     [SerializeField]
     BloodPressure bloodPressure;    
 }
