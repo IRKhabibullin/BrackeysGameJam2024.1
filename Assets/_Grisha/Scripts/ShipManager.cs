@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 public class ShipManager : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class ShipManager : MonoBehaviour
     [SerializeField] int requiredAmountOfFuel = 100;
     [SerializeField] int currentAmountOfFuel;
     bool gameFinished;
+    public List<ShipMember> shipMembers;
 
     void Start()
     {
