@@ -8,7 +8,7 @@ public static class ShipEventsBus
     public static Action<int> AddFuel;
 
     // Events from ship manager at the end of the game
-    public static Action GameLosed;
+    public static Action GameLost;
     public static Action GameWon;
 
 }

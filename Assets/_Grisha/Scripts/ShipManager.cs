@@ -41,7 +41,7 @@ public class ShipManager : MonoBehaviour
         if(isVictory)
             ShipEventsBus.GameWon?.Invoke();
         else
-            ShipEventsBus.GameLosed?.Invoke();
+            ShipEventsBus.GameLost?.Invoke();
         
     }
 
