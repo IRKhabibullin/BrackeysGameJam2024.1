@@ -50,6 +50,7 @@ MonoBehaviour:
     shipMemberSex: 0
     memberAge: 0
     bloodType: 0
+    heartBeat: 0
     bloodPressure:
       upper: 0
       bottom: 0
