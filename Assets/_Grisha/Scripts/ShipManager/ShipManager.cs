@@ -36,6 +36,7 @@ public class ShipManager : MonoBehaviour
             }
             else if(currentAmountOfFuel < requiredAmountOfFuel & isTankFull)
             {
+                isTankFull = false;
                 ShipEventsBus.FuelHasBeenStolen?.Invoke();
             }
             else if(currentAmountOfFuel >= requiredAmountOfFuel & shipMembers.Count == 7) // need to check, that every ship member is back
