@@ -12,15 +12,6 @@ public class ShipManager : MonoBehaviour
     bool isTankFull = false;
     public List<ShipMember> shipMembers;
 
-    void Start()
-    {
-        ShipEventsBus.GameSessionStart += GameSessionStart;
-
-        ShipEventsBus.AddFuel += AddFuel;
-        ShipEventsBus.RemoveFuel += RemoveFuel;
-        
-        ShipEventsBus.ConfirmTheVictory += ConfirmTheVictory;
-    }
     void Update()
     {
         if(gameInProgress)
@@ -28,65 +19,43 @@ public class ShipManager : MonoBehaviour
             currentOxygenTimer -= Time.deltaTime;
             if(currentOxygenTimer <= 0)
             {
-                GameSessionEnd(false);
-            }
-            else if(currentAmountOfFuel >= requiredAmountOfFuel & !isTankFull)
-            {
-                PendingVictory();
-            }
-            else if(currentAmountOfFuel < requiredAmountOfFuel & isTankFull)
-            {
-                isTankFull = false;
-                ShipEventsBus.FuelHasBeenStolen?.Invoke();
-            }
-            else if(currentAmountOfFuel >= requiredAmountOfFuel & shipMembers.Count == 7) // need to check, that every ship member is back
-            {
-                GameSessionEnd(true);
+                gameInProgress = false;
+                ShipEventsBus.OxygenHasRunOut?.Invoke();
             }
         }
     }
-
-    void GameSessionStart()
+    void StartTimer()
     {
-        currentOxygenTimer = startingOxygenTimer;
-
         gameInProgress = true;
     }
-    void GameSessionEnd(bool isVictory)
-    {
-        if(!isVictory)
-        {
-            gameInProgress = false;
-            currentOxygenTimer = 0;
-            ShipEventsBus.OxygenHasRunOut?.Invoke();
-        }
-        else
-        {
-            ShipEventsBus.FuelHasBeenCollected?.Invoke();
-        }
-    }
-    void PendingVictory()
-    {
-        isTankFull = true;
-        ShipEventsBus.AskVictoryConfirmation?.Invoke();
-    }
-    void ConfirmTheVictory()
-    {
-        gameInProgress = false;
-        GameSessionEnd(true);
-    }
+
     void RemoveFuel(int fuelToRemove)
     {
         currentAmountOfFuel -= fuelToRemove;
+        if(true)
+        {
+            ShipEventsBus.FuelStoppedBeingFull?.Invoke();
+        }
     }
     void AddFuel(int fuelToAdd)
     {
         currentAmountOfFuel += fuelToAdd;
+        if(currentAmountOfFuel >= requiredAmountOfFuel)
+        {
+            isTankFull = true;
+            ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == 7);
+        }
+    }
+    void OnEnable()
+    {
+        ShipEventsBus.AddFuel += AddFuel;
+        ShipEventsBus.RemoveFuel += RemoveFuel;
+        GameEventsBus.GameSessionStart += StartTimer;
     }
     void OnDisable()
     {
         ShipEventsBus.AddFuel -= AddFuel;
         ShipEventsBus.RemoveFuel -= RemoveFuel;
-        ShipEventsBus.ConfirmTheVictory -= ConfirmTheVictory;
+        GameEventsBus.GameSessionStart -= StartTimer;
     }
 }
