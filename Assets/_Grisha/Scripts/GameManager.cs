@@ -10,23 +10,4 @@ public class GameManager : MonoBehaviour
     {
         GameEventsBus.GameSessionStart?.Invoke();
     }
-    void GameLost()
-    {
-
-    }
-    void GameWon(bool isAllMembersBack)
-    {
-
-    }
-    void OnEnable()
-    {
-        ShipEventsBus.OxygenHasRunOut += GameLost;
-        ShipEventsBus.FuelBecameFull += GameWon;
-    }
-    void OnDisable()
-    {
-        ShipEventsBus.OxygenHasRunOut -= GameLost;
-        ShipEventsBus.FuelBecameFull -= GameWon;
-    }
-
 }
