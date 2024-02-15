@@ -31,7 +31,7 @@ public class ShipMember : MonoBehaviour
     /// <param name="bodyPartState"> Название  состояния части тела (healty, damaged, xRay, xRayInfected) </param>
     public void SetBodyPartState(string bodyPartName, string bodyPartStateName)
     {
-        var _bodyPartSprite = gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>().sprite;
-        _bodyPartSprite = soBodyParts[bodyPartName].GetSpriteByState(bodyPartStateName);
+        var _soBodyPart = soBodyParts[bodyPartName].GetSpriteByState(bodyPartStateName);
+        gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>().sprite = _soBodyPart;
     }
 }

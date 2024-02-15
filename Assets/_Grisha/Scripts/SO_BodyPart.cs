@@ -11,9 +11,13 @@ public class SO_BodyPart : ScriptableObject
     public Sprite xRayInfected;
     public Sprite GetSpriteByState(string stateName)
     {
-        Dictionary<string, Sprite> _states = new() {
-            {"healthy", healthy}, {"damaged", damaged}, {"xRay", xRay}, {"xRayInfected", xRayInfected}
+        return stateName switch
+        {
+            "healthy" => healthy,
+            "damaged" => damaged,
+            "xRay" => xRay,
+            "xRayInfected" => xRayInfected,
+            _ => healthy,
         };
-        return _states[stateName];
     }
 }
