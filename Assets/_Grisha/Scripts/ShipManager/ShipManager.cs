@@ -48,8 +48,6 @@ public class ShipManager : MonoBehaviour
     void GameSessionStart()
     {
         currentOxygenTimer = startingOxygenTimer;
-        ShipEventsBus.AddFuel += AddFuel;
-        ShipEventsBus.RemoveFuel += RemoveFuel;
 
         gameInProgress = true;
     }
