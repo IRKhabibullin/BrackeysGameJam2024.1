@@ -8,23 +8,40 @@ public class ShipManager : MonoBehaviour
     [SerializeField] float currentOxygenTimer;
     [SerializeField] int requiredAmountOfFuel = 100;
     [SerializeField] int currentAmountOfFuel;
-    bool gameFinished;
+    bool gameInProgress = false;
+    bool isTankFull = false;
     public List<ShipMember> shipMembers;
 
     void Start()
     {
-        GameSessionStart();
+        ShipEventsBus.GameSessionStart += GameSessionStart;
+
+        ShipEventsBus.AddFuel += AddFuel;
+        ShipEventsBus.RemoveFuel += RemoveFuel;
+        
+        ShipEventsBus.ConfirmTheVictory += ConfirmTheVictory;
     }
     void Update()
     {
-        if(!gameFinished)
+        if(gameInProgress)
         {
-            if (currentOxygenTimer > 0 & currentAmountOfFuel < requiredAmountOfFuel)
-                currentOxygenTimer -= Time.deltaTime;
-            else if(currentAmountOfFuel >= requiredAmountOfFuel)
-                GameSessionEnd(true);
-            else
+            currentOxygenTimer -= Time.deltaTime;
+            if(currentOxygenTimer <= 0)
+            {
                 GameSessionEnd(false);
+            }
+            else if(currentAmountOfFuel >= requiredAmountOfFuel & !isTankFull)
+            {
+                PendingVictory();
+            }
+            else if(currentAmountOfFuel < requiredAmountOfFuel & isTankFull)
+            {
+                ShipEventsBus.FuelHasBeenStolen?.Invoke();
+            }
+            else if(currentAmountOfFuel >= requiredAmountOfFuel & shipMembers.Count == 7) // need to check, that every ship member is back
+            {
+                GameSessionEnd(true);
+            }
         }
     }
 
@@ -33,18 +50,32 @@ public class ShipManager : MonoBehaviour
         currentOxygenTimer = startingOxygenTimer;
         ShipEventsBus.AddFuel += AddFuel;
         ShipEventsBus.RemoveFuel += RemoveFuel;
+
+        gameInProgress = true;
     }
     void GameSessionEnd(bool isVictory)
     {
-        gameFinished = true;
-        currentOxygenTimer = 0;
-        if(isVictory)
-            ShipEventsBus.GameWon?.Invoke();
+        if(!isVictory)
+        {
+            gameInProgress = false;
+            currentOxygenTimer = 0;
+            ShipEventsBus.OxygenHasRunOut?.Invoke();
+        }
         else
-            ShipEventsBus.GameLost?.Invoke();
-        
+        {
+            ShipEventsBus.FuelHasBeenCollected?.Invoke();
+        }
     }
-
+    void PendingVictory()
+    {
+        isTankFull = true;
+        ShipEventsBus.AskVictoryConfirmation?.Invoke();
+    }
+    void ConfirmTheVictory()
+    {
+        gameInProgress = false;
+        GameSessionEnd(true);
+    }
     void RemoveFuel(int fuelToRemove)
     {
         currentAmountOfFuel -= fuelToRemove;
@@ -57,5 +88,6 @@ public class ShipManager : MonoBehaviour
     {
         ShipEventsBus.AddFuel -= AddFuel;
         ShipEventsBus.RemoveFuel -= RemoveFuel;
+        ShipEventsBus.ConfirmTheVictory -= ConfirmTheVictory;
     }
 }
