@@ -136,34 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe443589b9e264b7595cd29096e0b5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipMemberProfile:
-    MemberHeight: 0
-    MemberWeight: 0
-    ShipMemberSex: 0
-    MemberAge: 0
-    BloodType: 0
-    HeartBeat: 0
-    BloodPressure:
-      Upper: 0
-      Bottom: 0
-  Head:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 5082453500496428922}
-  Torso:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 1600237182853823918}
-  RightHand:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 4548583749119794442}
-  LeftHand:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 8758511612863326472}
-  RightLeg:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 800703993992623541}
-  LeftLeg:
-    BodyPartState: {fileID: 0}
-    BodyPartSpriteObject: {fileID: 3548185608039793720}
+  shipMemberProfile: {fileID: 0}
+  head: {fileID: 0}
+  torso: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightLeg: {fileID: 0}
+  leftLeg: {fileID: 0}
 --- !u!1 &1420053197539037477
 GameObject:
   m_ObjectHideFlags: 0

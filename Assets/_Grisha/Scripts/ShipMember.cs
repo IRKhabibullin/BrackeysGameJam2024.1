@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,21 +8,38 @@ public class ShipMember : MonoBehaviour
     [SerializeField] SO_ShipMemberProfile shipMemberProfile;
 
     [Header("Body parts")]
-    public SO_BodyPart head;
-    public SO_BodyPart torso;
-    public SO_BodyPart rightHand;
-    public SO_BodyPart leftHand;
-    public SO_BodyPart rightLeg;
-    public SO_BodyPart leftLeg;
+    public SO_BodyPart Head;
+    public SO_BodyPart Torso;
+    public SO_BodyPart RightHand;
+    public SO_BodyPart LeftHand;
+    public SO_BodyPart RightLeg;
+    public SO_BodyPart LeftLeg;
 
     /// <summary>
     /// Применяет состояние для части тела
     /// </summary>
     /// <param name="bodyPartName"> Название части тела (Head, Torso, RightHand, LeftHand, RightLeg, LeftLeg) </param>
-    /// <param name="bodyPartState"> Спрайт  состояния части тела (healty, damabed, xRay, xRayInfected) </param>
-    public void SetBodyPartState(string bodyPartName, SpriteRenderer bodyPartState)
+    /// <param name="bodyPartState"> Название  состояния части тела (healty, damaged, xRay, xRayInfected) </param>
+    public void SetBodyPartState(string bodyPartName, string bodyPartStateName)
     {
-        var _spriteRenderer = gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>();
-        _spriteRenderer = bodyPartState;
+        SO_BodyPart _soBodyPart = DefineBodyPart(bodyPartName);  
+        Dictionary<string, Sprite> _stateSprites = new() 
+        {
+            {"healthy", _soBodyPart.healthy}, {"damaged", _soBodyPart.damaged}, 
+            {"xRay", _soBodyPart.xRay}, {"xRayInfected", _soBodyPart.xRayInfected}
+        };
+
+        gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>().sprite = _stateSprites[bodyPartStateName];
     }
+    SO_BodyPart DefineBodyPart(string bodyPartName)
+    {
+        Dictionary<string, SO_BodyPart> _soBodyParts = new() 
+        {
+            {"Head", Head}, {"Torso", Torso}, 
+            {"RightHand", RightHand}, {"LeftHand", LeftHand},
+            {"RightLeg", RightLeg}, {"LeftLeg", LeftLeg},
+        };
+        return _soBodyParts[bodyPartName];
+    }
+
 }
