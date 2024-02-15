@@ -14,7 +14,16 @@ public class ShipMember : MonoBehaviour
     public SO_BodyPart LeftHand;
     public SO_BodyPart RightLeg;
     public SO_BodyPart LeftLeg;
-
+    Dictionary<string, SO_BodyPart> soBodyParts;
+    void Start()
+    {
+        soBodyParts = new() 
+        {
+            {"Head", Head}, {"Torso", Torso}, 
+            {"RightHand", RightHand}, {"LeftHand", LeftHand},
+            {"RightLeg", RightLeg}, {"LeftLeg", LeftLeg},
+        };
+    }
     /// <summary>
     /// Применяет состояние для части тела
     /// </summary>
@@ -22,24 +31,7 @@ public class ShipMember : MonoBehaviour
     /// <param name="bodyPartState"> Название  состояния части тела (healty, damaged, xRay, xRayInfected) </param>
     public void SetBodyPartState(string bodyPartName, string bodyPartStateName)
     {
-        SO_BodyPart _soBodyPart = DefineBodyPart(bodyPartName);  
-        Dictionary<string, Sprite> _stateSprites = new() 
-        {
-            {"healthy", _soBodyPart.healthy}, {"damaged", _soBodyPart.damaged}, 
-            {"xRay", _soBodyPart.xRay}, {"xRayInfected", _soBodyPart.xRayInfected}
-        };
-
-        gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>().sprite = _stateSprites[bodyPartStateName];
+        var _bodyPartSprite = gameObject.transform.Find(bodyPartName).GetComponent<SpriteRenderer>().sprite;
+        _bodyPartSprite = soBodyParts[bodyPartName].GetSpriteByState(bodyPartStateName);
     }
-    SO_BodyPart DefineBodyPart(string bodyPartName)
-    {
-        Dictionary<string, SO_BodyPart> _soBodyParts = new() 
-        {
-            {"Head", Head}, {"Torso", Torso}, 
-            {"RightHand", RightHand}, {"LeftHand", LeftHand},
-            {"RightLeg", RightLeg}, {"LeftLeg", LeftLeg},
-        };
-        return _soBodyParts[bodyPartName];
-    }
-
 }
