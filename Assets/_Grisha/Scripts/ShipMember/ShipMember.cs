@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ShipMember : MonoBehaviour
@@ -34,6 +35,9 @@ public class ShipMember : MonoBehaviour
     
     
     private Dictionary<BodyPart, (SO_BodyPart, SpriteRenderer, SpriteRenderer)> _bodyPartsMap;
+
+    public bool IsFinalInfectionStage => infectedBodyPart == BodyPart.Head;
+
     void Start()
     {
         _bodyPartsMap = new() 
@@ -50,6 +54,7 @@ public class ShipMember : MonoBehaviour
     /// <summary>
     /// Перерисовываем все части тела с учетом ран и заражения личинкой
     /// </summary>
+    [ContextMenu("RedrawBodyParts")]
     public void RedrawBodyParts()
     {
         foreach (var (bodyPart, (so, suitPart, xRayPart)) in _bodyPartsMap)
