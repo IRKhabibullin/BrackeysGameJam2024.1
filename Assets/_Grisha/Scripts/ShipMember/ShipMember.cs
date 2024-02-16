@@ -41,6 +41,7 @@ public class ShipMember : MonoBehaviour
     public bool IsFinalInfectionStage => infectedBodyPart == BodyPart.Head;
 
     public bool IsInfected => infectedBodyPart != BodyPart.None;
+    public bool IsDamaged => damagedBodyParts.Count > 0;
 
     void Start()
     {

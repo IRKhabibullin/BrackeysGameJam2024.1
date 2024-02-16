@@ -53,7 +53,7 @@ public class PlanetController : MonoBehaviour
                 shipMember.MoveInfection();
             }
         }
-        else if(ShouldInfectShipMember())
+        else if(ShouldInfectShipMember() & shipMember.IsDamaged)
         {
             shipMember.ApplyInfection();
         }
@@ -76,7 +76,7 @@ public class PlanetController : MonoBehaviour
         {
             return chance <= chanceToModifyMedParamsForInfected;
         }
-        else if(shipMember.damagedBodyParts.Count > 0)
+        else if(shipMember.IsDamaged)
         {
             return chance <= chanceToModifyMedParamsForDamaged;
         }
