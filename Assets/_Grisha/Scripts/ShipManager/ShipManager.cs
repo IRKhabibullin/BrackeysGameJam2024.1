@@ -11,13 +11,14 @@ public class ShipManager : MonoBehaviour
     public List<ShipMember> shipMembers;
 
     private ShipMember _shipMemberAtTheDoors;
-    private bool IsTankFull => currentAmountOfFuel == requiredAmountOfFuel;
+    private bool IsTankFull => currentAmountOfFuel >= requiredAmountOfFuel;
 
     private void CheckShipMember(ShipMember shipMember)
     {
         _shipMemberAtTheDoors = shipMember;
         
-        // Update UI with data of ship member
+        ShipEventsBus.ShowShipMemberProfile(shipMember.shipMemberProfile);
+
     }
 
     private void LetShipMemberIn()
@@ -61,12 +62,7 @@ public class ShipManager : MonoBehaviour
 
     void RemoveFuel(int fuelToRemove)
     {
-        var tankWasFull = IsTankFull;
         currentAmountOfFuel -= fuelToRemove;
-        if(tankWasFull)
-        {
-            ShipEventsBus.FuelStoppedBeingFull?.Invoke();
-        }
     }
     void AddFuel(int fuelToAdd)
     {

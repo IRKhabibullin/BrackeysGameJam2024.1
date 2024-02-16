@@ -5,8 +5,8 @@ using System.Linq;
 
 public class ShipMember : MonoBehaviour
 {
-    [SerializeField] SO_ShipMemberProfile shipMemberProfile;
-    ModifiedMedParams modifiedMedParams;
+    public SO_ShipMemberProfile shipMemberProfile;
+    public ModifiedMedParams modifiedMedParams;
 
     [Header("Body parts")]
     [SerializeField] private SO_BodyPart Head;

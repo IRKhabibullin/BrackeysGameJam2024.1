@@ -11,8 +11,9 @@ public static class ShipEventsBus
 
     /// bool = isAllShipMembers on the ship
     public static Action<bool> FuelBecameFull;
-    public static Action FuelStoppedBeingFull;
 
     public static Action LettingShipMemberIn;
     public static Action BurningShipMember;
+
+    public static Action<SO_ShipMemberProfile> ShowShipMemberProfile;
 }
