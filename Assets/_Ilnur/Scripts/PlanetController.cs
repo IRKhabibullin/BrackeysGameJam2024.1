@@ -20,7 +20,7 @@ public class PlanetController : MonoBehaviour
 
     private void SendShipMemberBack()
     {
-        if (shipMembers.Count < 0)
+        if (shipMembers.Count <= 0)
         {
             return;
         }

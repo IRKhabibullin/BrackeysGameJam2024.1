@@ -5,35 +5,42 @@ using System.Collections.Generic;
 public class ShipManager : MonoBehaviour
 {
     // Oxygen timer = time of the round in seconds 
-    [SerializeField] float startingOxygenTimer = 60.0f; 
-    [SerializeField] float currentOxygenTimer;
-    [SerializeField] int requiredAmountOfFuel = 100;
+    [SerializeField] float oxygenTimer = 600.0f;
+    [SerializeField] int requiredAmountOfFuel = 10;
     [SerializeField] int currentAmountOfFuel;
-    bool gameInProgress = false;
-    bool isTankFull = false;
     public List<ShipMember> shipMembers;
 
     private ShipMember _shipMemberAtTheDoors;
+    private bool IsTankFull => currentAmountOfFuel == requiredAmountOfFuel;
 
     private void CheckShipMember(ShipMember shipMember)
     {
-        Debug.Log($"CheckShipMember {shipMember.name}");
         _shipMemberAtTheDoors = shipMember;
         
-        LetInShipMember();
+        // Update UI with data of ship member
     }
 
-    private void LetInShipMember()
+    private void LetShipMemberIn()
     {
-        // if fuel is full and we dont need to send anyone
-        shipMembers.Add(_shipMemberAtTheDoors);
+        if (IsTankFull)
+        {
+            // we just stay at ship ready to fly off the planet
+            shipMembers.Add(_shipMemberAtTheDoors);
+        }
+        else
+        {
+            
+            PlanetEventsBus.ShipMemberComingBack?.Invoke();
+        }
+    }
+
+    private void BurnShipMember()
+    {
         
-        PlanetEventsBus.ShipMemberComingBack?.Invoke();
     }
 
     void SendAllShipMembers()
     {
-        gameInProgress = true;
         StartCoroutine(StartTimerCoroutine());
 
         foreach (var shipMember in shipMembers)
@@ -47,15 +54,16 @@ public class ShipManager : MonoBehaviour
 
     private IEnumerator StartTimerCoroutine()
     {
-        yield return new WaitForSeconds(startingOxygenTimer);
+        yield return new WaitForSeconds(oxygenTimer);
         
         ShipEventsBus.OxygenHasRunOut?.Invoke();
     }
 
     void RemoveFuel(int fuelToRemove)
     {
+        var tankWasFull = IsTankFull;
         currentAmountOfFuel -= fuelToRemove;
-        if(true)
+        if(tankWasFull)
         {
             ShipEventsBus.FuelStoppedBeingFull?.Invoke();
         }
@@ -63,9 +71,8 @@ public class ShipManager : MonoBehaviour
     void AddFuel(int fuelToAdd)
     {
         currentAmountOfFuel += fuelToAdd;
-        if(currentAmountOfFuel >= requiredAmountOfFuel)
+        if(IsTankFull)
         {
-            isTankFull = true;
             ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == 7);
         }
     }
@@ -73,6 +80,8 @@ public class ShipManager : MonoBehaviour
     {
         ShipEventsBus.AddFuel += AddFuel;
         ShipEventsBus.RemoveFuel += RemoveFuel;
+        ShipEventsBus.LettingShipMemberIn += LetShipMemberIn;
+        ShipEventsBus.BurningShipMember += BurnShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
     }
@@ -80,6 +89,8 @@ public class ShipManager : MonoBehaviour
     {
         ShipEventsBus.AddFuel -= AddFuel;
         ShipEventsBus.RemoveFuel -= RemoveFuel;
+        ShipEventsBus.LettingShipMemberIn -= LetShipMemberIn;
+        ShipEventsBus.BurningShipMember -= BurnShipMember;
         GameEventsBus.ShipMembersGoingGathering -= SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack -= CheckShipMember;
     }

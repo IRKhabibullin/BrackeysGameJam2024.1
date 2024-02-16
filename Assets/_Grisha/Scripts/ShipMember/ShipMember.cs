@@ -50,9 +50,9 @@ public class ShipMember : MonoBehaviour
             {BodyPart.Head, (Head, headSuit, headXRay)},
             {BodyPart.Torso, (Torso, torsoSuit, torsoXRay)}, 
             {BodyPart.RightHand, (RightHand, rightHandSuit, rightHandXRay)},
-            {BodyPart.LeftHand, (Head, leftHandSuit, leftHandXRay)},
+            {BodyPart.LeftHand, (LeftHand, leftHandSuit, leftHandXRay)},
             {BodyPart.RightLeg, (RightLeg, rightLegSuit, rightLegXRay)},
-            {BodyPart.LeftLeg, (Head, leftLegSuit, leftLegXRay)},
+            {BodyPart.LeftLeg, (LeftLeg, leftLegSuit, leftLegXRay)},
         };
     }
 
