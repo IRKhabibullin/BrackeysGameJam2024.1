@@ -39,7 +39,7 @@ public class ShipMember : MonoBehaviour
 
     public bool IsFinalInfectionStage => infectedBodyPart == BodyPart.Head;
 
-    public bool IsInfected = false;
+    public bool IsInfected => infectedBodyPart != BodyPart.None;
 
     void Start()
     {
@@ -87,7 +87,6 @@ public class ShipMember : MonoBehaviour
     }
     public void ApplyInfection()
     {
-        IsInfected = true;
         List<BodyPart> _bodyPartsToInfect = new() 
         {
             BodyPart.RightHand, BodyPart.LeftHand, 
@@ -99,7 +98,11 @@ public class ShipMember : MonoBehaviour
     }
     public void MoveInfection()
     {
-        if(infectedBodyPart == BodyPart.Torso)
+        if(infectedBodyPart != BodyPart.Torso & infectedBodyPart != BodyPart.Head)
+        {
+            infectedBodyPart = BodyPart.Torso;
+        }
+        else if(infectedBodyPart == BodyPart.Torso)
         {
             infectedBodyPart = BodyPart.Head;
         }

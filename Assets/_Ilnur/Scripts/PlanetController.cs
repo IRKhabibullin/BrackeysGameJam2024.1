@@ -38,31 +38,36 @@ public class PlanetController : MonoBehaviour
     }
     void ModifyShipMember(ShipMember shipMember)
     {
-        if(SetDamageForShipMember())
+        if(ShouldDamageShipMember())
         {
             shipMember.ApplyDamage();
         }
 
-        if(shipMember.IsInfected & MoveInfectionForShipMember())
+        if(shipMember.IsInfected & ShouldMoveInfection())
         {
-           shipMember.MoveInfection();
+            if(ShouldMoveInfection())
+            {    
+                shipMember.MoveInfection();
+            }
         }
-        else if(SetInfectionForShipMember())
+        else if(ShouldInfectShipMember())
         {
             shipMember.ApplyInfection();
         }
+
+        shipMember.RedrawBodyParts();
     }
-    bool SetDamageForShipMember()
+    bool ShouldDamageShipMember()
     {
         int chance = UnityEngine.Random.Range(0, 100);
         return chance <= chanceToTakeDamage;
     }
-    bool SetInfectionForShipMember()
+    bool ShouldInfectShipMember()
     {
         int chance = UnityEngine.Random.Range(0, 100);
         return chance <= chanceToTakeInfection;
     }
-    bool MoveInfectionForShipMember()
+    bool ShouldMoveInfection()
     {
         int chance = UnityEngine.Random.Range(0, 100);
         return chance <= chanceToMoveInfection;
