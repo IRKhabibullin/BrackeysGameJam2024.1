@@ -16,6 +16,7 @@ public class SO_ShipMemberProfile: ScriptableObject
     [Header(header: "Medical indicators")]
     public int heartBeat;
     public BloodPressure bloodPressure;    
+    public float temperature;
 }
 
 public enum ShipMemberSex

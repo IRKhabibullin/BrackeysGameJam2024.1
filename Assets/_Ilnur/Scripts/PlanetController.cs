@@ -10,6 +10,9 @@ public class PlanetController : MonoBehaviour
     [SerializeField][Range(0, 100)] private int chanceToTakeDamage = 50;
     [SerializeField][Range(0, 100)] private int chanceToTakeInfection = 50;
     [SerializeField][Range(0, 100)] private int chanceToMoveInfection = 50;
+    [SerializeField][Range(0, 100)] private int chanceToModifyMedParamsForClean = 50;
+    [SerializeField][Range(0, 100)] private int chanceToModifyMedParamsForDamaged = 50;
+    [SerializeField][Range(0, 100)] private int chanceToModifyMedParamsForInfected = 50;
     private void AddShipMember(ShipMember shipMember)
     {
         shipMembers.Add(shipMember);
@@ -54,8 +57,33 @@ public class PlanetController : MonoBehaviour
         {
             shipMember.ApplyInfection();
         }
+        
+        if(ShouldModifyMedParams(shipMember))
+        {
+            shipMember.ModifyMedParams();
+        }
+        else
+        {
+            shipMember.SetDefaultMedParams();
+        }
 
         shipMember.RedrawBodyParts();
+    }
+    bool ShouldModifyMedParams(ShipMember shipMember)
+    {
+        int chance = UnityEngine.Random.Range(0, 100);
+        if(shipMember.IsInfected)
+        {
+            return chance <= chanceToModifyMedParamsForInfected;
+        }
+        else if(shipMember.damagedBodyParts.Count > 0)
+        {
+            return chance <= chanceToModifyMedParamsForDamaged;
+        }
+        else
+        {
+            return chance <= chanceToModifyMedParamsForClean;
+        }
     }
     bool ShouldDamageShipMember()
     {

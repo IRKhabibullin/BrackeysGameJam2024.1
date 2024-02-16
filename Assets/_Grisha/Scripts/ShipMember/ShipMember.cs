@@ -6,6 +6,7 @@ using System.Linq;
 public class ShipMember : MonoBehaviour
 {
     [SerializeField] SO_ShipMemberProfile shipMemberProfile;
+    ModifiedMedParams modifiedMedParams;
 
     [Header("Body parts")]
     [SerializeField] private SO_BodyPart Head;
@@ -111,6 +112,30 @@ public class ShipMember : MonoBehaviour
             infectedBodyPart = BodyPart.Torso;
         }
     }
+    public void SetDefaultMedParams()
+    {
+        modifiedMedParams.bloodPressure = shipMemberProfile.bloodPressure;
+        modifiedMedParams.heartBeat = shipMemberProfile.heartBeat;
+        modifiedMedParams.temperature = shipMemberProfile.temperature;
+    }
+    public void ModifyMedParams()
+    {
+        var _defaultBloodPressure = shipMemberProfile.bloodPressure;
+        var _pressureModifier = 20;
+        modifiedMedParams.bloodPressure.upper = Random.Range(_defaultBloodPressure.upper - _pressureModifier, _defaultBloodPressure.upper + _pressureModifier);
+        modifiedMedParams.bloodPressure.bottom = Random.Range(_defaultBloodPressure.bottom - _pressureModifier, _defaultBloodPressure.bottom + _pressureModifier);
+
+        // normileze blood pressure a little bit, if difference between upper and bottom to low
+        if(modifiedMedParams.bloodPressure.upper - modifiedMedParams.bloodPressure.bottom <= 10)
+        {
+            modifiedMedParams.bloodPressure.upper += 5;
+            modifiedMedParams.bloodPressure.bottom -= 5;
+        }
+
+        modifiedMedParams.heartBeat = Random.Range(shipMemberProfile.heartBeat - 20, shipMemberProfile.heartBeat + 40);
+
+        modifiedMedParams.temperature = Random.Range(shipMemberProfile.temperature - 3.5f, shipMemberProfile.temperature + 3.5f);
+    }
 }
 
 
@@ -123,4 +148,11 @@ public enum BodyPart
     LeftHand,
     RightLeg,
     LeftLeg
+}
+[System.Serializable]
+public class ModifiedMedParams
+{
+    public int heartBeat;
+    public BloodPressure bloodPressure;    
+    public float temperature;
 }
