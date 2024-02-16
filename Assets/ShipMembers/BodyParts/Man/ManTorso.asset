@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c31683bfcf84d4a8db6fc1763ddb5d, type: 3}
+  m_Name: ManTorso
+  m_EditorClassIdentifier: 
+  healthy: {fileID: 1892996222490500912, guid: 96639fc94a46ff54dafaa9ae0a92c209, type: 3}
+  damaged: {fileID: 7790873346233952518, guid: f7a03fd4651c6fd4d8653993c377052b, type: 3}
+  xRay: {fileID: -916094123765872906, guid: bd05d119e8f658a448e428175cbd28f7, type: 3}
+  xRayInfected: {fileID: -8742864012522527650, guid: 22d4fed6c37201b4d981caf77a8dcd6f, type: 3}

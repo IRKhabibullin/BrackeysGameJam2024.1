@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c31683bfcf84d4a8db6fc1763ddb5d, type: 3}
+  m_Name: ManLeftLeg
+  m_EditorClassIdentifier: 
+  healthy: {fileID: 1551553606891234902, guid: 012fee0800867ba478b70b89a7db29ca, type: 3}
+  damaged: {fileID: 6854928297533705005, guid: 190cc8bce01ff77468ec2fca58c82268, type: 3}
+  xRay: {fileID: -7140432956373122796, guid: 06f896f064468004d8499eb7e996fa84, type: 3}
+  xRayInfected: {fileID: -4991172563748269679, guid: e327a046afe04cc4cb930b49993ab230, type: 3}
