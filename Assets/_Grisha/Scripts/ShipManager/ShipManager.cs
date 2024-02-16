@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -12,21 +13,43 @@ public class ShipManager : MonoBehaviour
     bool isTankFull = false;
     public List<ShipMember> shipMembers;
 
-    void Update()
+    private ShipMember _shipMemberAtTheDoors;
+
+    private void CheckShipMember(ShipMember shipMember)
     {
-        if(gameInProgress)
-        {
-            currentOxygenTimer -= Time.deltaTime;
-            if(currentOxygenTimer <= 0)
-            {
-                gameInProgress = false;
-                ShipEventsBus.OxygenHasRunOut?.Invoke();
-            }
-        }
+        Debug.Log($"CheckShipMember {shipMember.name}");
+        _shipMemberAtTheDoors = shipMember;
+        
+        LetInShipMember();
     }
-    void StartTimer()
+
+    private void LetInShipMember()
+    {
+        // if fuel is full and we dont need to send anyone
+        shipMembers.Add(_shipMemberAtTheDoors);
+        
+        PlanetEventsBus.ShipMemberComingBack?.Invoke();
+    }
+
+    void SendAllShipMembers()
     {
         gameInProgress = true;
+        StartCoroutine(StartTimerCoroutine());
+
+        foreach (var shipMember in shipMembers)
+        {
+            PlanetEventsBus.ShipMemberGoingGathering(shipMember);
+        }
+        shipMembers.Clear();
+
+        PlanetEventsBus.ShipMemberComingBack?.Invoke();
+    }
+
+    private IEnumerator StartTimerCoroutine()
+    {
+        yield return new WaitForSeconds(startingOxygenTimer);
+        
+        ShipEventsBus.OxygenHasRunOut?.Invoke();
     }
 
     void RemoveFuel(int fuelToRemove)
@@ -50,12 +73,14 @@ public class ShipManager : MonoBehaviour
     {
         ShipEventsBus.AddFuel += AddFuel;
         ShipEventsBus.RemoveFuel += RemoveFuel;
-        GameEventsBus.GameSessionStart += StartTimer;
+        GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
+        PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
     }
     void OnDisable()
     {
         ShipEventsBus.AddFuel -= AddFuel;
         ShipEventsBus.RemoveFuel -= RemoveFuel;
-        GameEventsBus.GameSessionStart -= StartTimer;
+        GameEventsBus.ShipMembersGoingGathering -= SendAllShipMembers;
+        PlanetEventsBus.ShipMemberSentBack -= CheckShipMember;
     }
 }
