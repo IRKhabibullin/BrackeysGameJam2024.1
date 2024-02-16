@@ -98,13 +98,17 @@ public class ShipMember : MonoBehaviour
     }
     public void MoveInfection()
     {
-        if(infectedBodyPart != BodyPart.Torso & infectedBodyPart != BodyPart.Head)
+        if(infectedBodyPart == BodyPart.Head)
         {
-            infectedBodyPart = BodyPart.Torso;
+            return;
         }
         else if(infectedBodyPart == BodyPart.Torso)
         {
             infectedBodyPart = BodyPart.Head;
+        }
+        else
+        {
+            infectedBodyPart = BodyPart.Torso;
         }
     }
 }

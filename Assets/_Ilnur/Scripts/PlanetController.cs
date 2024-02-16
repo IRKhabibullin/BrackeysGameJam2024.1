@@ -43,7 +43,7 @@ public class PlanetController : MonoBehaviour
             shipMember.ApplyDamage();
         }
 
-        if(shipMember.IsInfected & ShouldMoveInfection())
+        if(shipMember.IsInfected)
         {
             if(ShouldMoveInfection())
             {    
