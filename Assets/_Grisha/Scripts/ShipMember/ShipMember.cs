@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
 
 public class ShipMember : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class ShipMember : MonoBehaviour
 
     public bool IsFinalInfectionStage => infectedBodyPart == BodyPart.Head;
 
+    public bool IsInfected = false;
+
     void Start()
     {
         _bodyPartsMap = new() 
@@ -73,7 +76,36 @@ public class ShipMember : MonoBehaviour
             }
         }
     }
+    public void ApplyDamage()
+    {
+        List<BodyPart> _healtyBodyParts = _bodyPartsMap.Keys.ToList();
+        _healtyBodyParts.RemoveAll(item => damagedBodyParts.Contains(item));
+
+        int _bodyPartToDamageIndex = Random.Range(0, _healtyBodyParts.Count);
+
+        damagedBodyParts.Add(_healtyBodyParts[_bodyPartToDamageIndex]);
+    }
+    public void ApplyInfection()
+    {
+        IsInfected = true;
+        List<BodyPart> _bodyPartsToInfect = new() 
+        {
+            BodyPart.RightHand, BodyPart.LeftHand, 
+            BodyPart.RightLeg, BodyPart.LeftLeg
+        };
+        int _bodyPartToInfectIndex = Random.Range(0, _bodyPartsToInfect.Count);
+
+        infectedBodyPart = _bodyPartsToInfect[_bodyPartToInfectIndex];
+    }
+    public void MoveInfection()
+    {
+        if(infectedBodyPart == BodyPart.Torso)
+        {
+            infectedBodyPart = BodyPart.Head;
+        }
+    }
 }
+
 
 public enum BodyPart
 {
