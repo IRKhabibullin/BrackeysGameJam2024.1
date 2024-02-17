@@ -17,6 +17,7 @@ public class MedicalParamsPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        ShipEventsBus.ResettingPanel += TurnOffSwitches;
         pulseSwitch.onValueChanged.AddListener(TogglePulseSwitch);
         pressureSwitch.onValueChanged.AddListener(TogglePressureSwitch);
         temperatureSwitch.onValueChanged.AddListener(ToggleTemperatureSwitch);
@@ -27,12 +28,20 @@ public class MedicalParamsPanel : MonoBehaviour
     
     private void OnDisable()
     {
+        ShipEventsBus.ResettingPanel -= TurnOffSwitches;
         pulseSwitch.onValueChanged.RemoveListener(TogglePulseSwitch);
         pressureSwitch.onValueChanged.RemoveListener(TogglePressureSwitch);
         temperatureSwitch.onValueChanged.RemoveListener(ToggleTemperatureSwitch);
         PlanetEventsBus.ShipMemberSentBack -= SaveShipMemberData;
         ShipEventsBus.LettingShipMemberIn -= ResetShipMemberData;
         ShipEventsBus.BurningShipMember -= ResetShipMemberData;
+    }
+
+    private void TurnOffSwitches()
+    {
+        pulseSwitch.isOn = false;
+        pressureSwitch.isOn = false;
+        temperatureSwitch.isOn = false;
     }
 
     private void SaveShipMemberData(ShipMember shipMember)
