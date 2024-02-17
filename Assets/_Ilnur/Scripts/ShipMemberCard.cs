@@ -47,10 +47,10 @@ public class ShipMemberCard : MonoBehaviour
     }
     private void OnEnable()
     {
-        ShipEventsBus.ShowShipMemberProfile += RefreshProfile;
+        ShipEventsBus.ShowShipMemberProfileOnUI += RefreshProfile;
     }
     private void OnDisable()
     {
-        ShipEventsBus.ShowShipMemberProfile -= RefreshProfile;
+        ShipEventsBus.ShowShipMemberProfileOnUI -= RefreshProfile;
     }
 }

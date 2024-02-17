@@ -9,6 +9,7 @@ public class ShipManager : MonoBehaviour
     [SerializeField] int requiredAmountOfFuel = 10;
     [SerializeField] int currentAmountOfFuel;
     public List<ShipMember> shipMembers;
+    private int aliveCrewNumber;
 
     private ShipMember _shipMemberAtTheDoors;
     private bool IsTankFull => currentAmountOfFuel >= requiredAmountOfFuel;
@@ -17,7 +18,7 @@ public class ShipManager : MonoBehaviour
     {
         _shipMemberAtTheDoors = shipMember;
         
-        ShipEventsBus.ShowShipMemberProfile(shipMember.shipMemberProfile);
+        ShipEventsBus.ShowShipMemberProfileOnUI(shipMember.shipMemberProfile);
 
     }
 
@@ -37,7 +38,8 @@ public class ShipManager : MonoBehaviour
 
     private void BurnShipMember()
     {
-        
+        aliveCrewNumber -= 1;
+        ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(aliveCrewNumber);
     }
 
     void SendAllShipMembers()
@@ -69,7 +71,7 @@ public class ShipManager : MonoBehaviour
         currentAmountOfFuel += fuelToAdd;
         if(IsTankFull)
         {
-            ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == 7);
+            ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == aliveCrewNumber);
         }
     }
     void OnEnable()
@@ -80,6 +82,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.BurningShipMember += BurnShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
+        //
     }
     void OnDisable()
     {
