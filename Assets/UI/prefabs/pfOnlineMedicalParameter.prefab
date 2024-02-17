@@ -333,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6070692750830195529}
+  - component: {fileID: 6395022701543207125}
   m_Layer: 5
   m_Name: pfOnlineMedicalParameter
   m_TagString: Untagged
@@ -363,6 +364,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 87.19354}
   m_SizeDelta: {x: 436.29, y: 218.6469}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6395022701543207125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390143199335083425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf8d0391aaf1ff4595c034965f8ebec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseSwitch: {fileID: 7523705876617968561}
+  pulseValue: {fileID: 3601348737090877214}
+  pressureSwitch: {fileID: 370502326888434574}
+  pressureValue: {fileID: 6680901887613159201}
+  temperatureSwitch: {fileID: 5819737159975327351}
+  temperatureValue: {fileID: 671248710389668568}
 --- !u!1001 &4485281370945121311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -455,16 +474,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2822765262474539345, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+      propertyPath: m_text
+      value: 'pressure:'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+--- !u!114 &370502326888434574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4258894809205860241, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 4485281370945121311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3569503565421169569 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1132522472503453630, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
   m_PrefabInstance: {fileID: 4485281370945121311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6680901887613159201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100416819285404478, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 4485281370945121311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6013203675834309664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,16 +602,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4258894809205860241, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+--- !u!114 &3601348737090877214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100416819285404478, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 6013203675834309664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6684669861602950046 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1132522472503453630, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
   m_PrefabInstance: {fileID: 6013203675834309664}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7523705876617968561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4258894809205860241, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 6013203675834309664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7771381580437664230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,11 +730,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2822765262474539345, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+      propertyPath: m_text
+      value: 'temperature:'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+--- !u!114 &671248710389668568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7100416819285404478, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 7771381580437664230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5819737159975327351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4258894809205860241, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}
+  m_PrefabInstance: {fileID: 7771381580437664230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7236995907671496280 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1132522472503453630, guid: 5274d427a6cb641369b3beb56ded35ff, type: 3}

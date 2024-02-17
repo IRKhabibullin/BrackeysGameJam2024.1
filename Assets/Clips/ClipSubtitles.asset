@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cbf90d955741dc904b9266d46bd458, type: 3}
+  m_Name: ClipSubtitles
+  m_EditorClassIdentifier: 
+  subtitles:
+  - clipName: Intro1
+    subtitles: 'The year 2224. Galaxy NGC 2419. The orbit of the planet Kepler-1638.
+      The ship "Astra", specializing in the exploration of planets in remote corners
+      of space, encounters an unexpected incident. As a result of the accident, most
+      of the fuel has been lost. The captain of the ship makes a decision: to go
+      to the nearest planet Kepler-1638 to get the necessary resources for refueling.'
