@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0a757d570b1486444a930092d30cfa49
+guid: e06e2f7eff63645fea09e960b2457a18
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4553090941134575565
-    second: woman_profile_photo_0
+      213: -3207466160798827022
+    second: MainMenu 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: woman_profile_photo_0
+      name: MainMenu 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 1921
+        height: 1081
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc710607614df2f30800000000000000
-      internalID: 4553090941134575565
+      spriteID: 2fdff78458acc73d0800000000000000
+      internalID: -3207466160798827022
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      woman_profile_photo_0: 4553090941134575565
+      MainMenu 1_0: -3207466160798827022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
