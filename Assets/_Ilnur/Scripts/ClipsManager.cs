@@ -3,17 +3,18 @@ using UnityEngine;
 public class ClipsManager : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _container;
 
     #region Intro
     private void RunIntro()
     {
-        _animator.gameObject.SetActive(true);
+        _container.SetActive(true);
         _animator.SetTrigger("RunIntro");
     }
 
     private void FinishIntro()
     {
-        _animator.gameObject.SetActive(false);
+        _container.SetActive(false);
         GameEventsBus.ShipMembersGoingGathering?.Invoke();
     }
     #endregion
@@ -21,13 +22,13 @@ public class ClipsManager : MonoBehaviour
     #region RunInfectedShipMember
     private void RunLettingInfectedShipMemberIn()
     {
-        _animator.gameObject.SetActive(true);
+        _container.SetActive(true);
         _animator.SetTrigger("RunInfectedShipMember");
     }
 
     private void FinishLettingInfectedShipMemberIn()
     {
-        _animator.gameObject.SetActive(false);
+        _container.SetActive(false);
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
     }
     #endregion
@@ -35,13 +36,13 @@ public class ClipsManager : MonoBehaviour
     #region RunLettingShipMemberIn
     private void RunLettingShipMemberIn()
     {
-        _animator.gameObject.SetActive(true);
+        _container.SetActive(true);
         _animator.SetTrigger("RunLettingShipMemberIn");
     }
 
     private void FinishLettingShipMemberIn()
     {
-        _animator.gameObject.SetActive(false);
+        _container.SetActive(false);
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
     }
     #endregion

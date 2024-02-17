@@ -59,6 +59,7 @@ public class ShipManager : MonoBehaviour
     [ContextMenu("KillShipMember")]
     private void KillShipMember()
     {
+        _shipMemberAtTheDoors.gameObject.SetActive(false);
         ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(--aliveCrewNumber);
     }
 
