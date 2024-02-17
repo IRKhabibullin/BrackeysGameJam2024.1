@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: SergeiProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Sergei
-  height: 175
-  weight: 70
+  nameAndSurname: Serhio Stenkovic
+  height: 203
+  weight: 112
   sex: 0
-  age: 25
-  bloodType: 0
-  photo: {fileID: 0}
-  heartBeat: 65
+  age: 34
+  bloodType: 2
+  photo: {fileID: -4588141277307187508, guid: 39a96f28bef62430e856955faac62252, type: 3}
+  heartBeat: 60
   bloodPressure:
     upper: 120
     bottom: 80
-  temperature: 36.6
+  temperature: 7

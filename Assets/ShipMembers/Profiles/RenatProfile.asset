@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: RenatProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Renat
-  height: 175
-  weight: 70
+  nameAndSurname: Ren Leni
+  height: 183
+  weight: 80
   sex: 0
-  age: 25
-  bloodType: 0
-  photo: {fileID: 0}
-  heartBeat: 64
+  age: 26
+  bloodType: 4
+  photo: {fileID: 1129207797788204421, guid: 411f92ca054a74161bb3a42920eaad2f, type: 3}
+  heartBeat: 84
   bloodPressure:
     upper: 120
     bottom: 80
-  temperature: 36.6
+  temperature: 36.7

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: YuriyProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Yuriy
-  height: 175
-  weight: 70
+  nameAndSurname: Yuriy Jumpson
+  height: 176
+  weight: 80
   sex: 0
-  age: 25
-  bloodType: 0
-  photo: {fileID: 0}
-  heartBeat: 66
+  age: 32
+  bloodType: -3
+  photo: {fileID: 1248301920996441117, guid: c9b3ad86ae3de4497bdb3d45fb3fcc04, type: 3}
+  heartBeat: 62
   bloodPressure:
-    upper: 120
-    bottom: 80
+    upper: 110
+    bottom: 85
   temperature: 36.6

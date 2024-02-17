@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: IlnurProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Ilnur
+  nameAndSurname: Ilnur Khabibi
   height: 175
-  weight: 70
+  weight: 82
   sex: 0
-  age: 25
-  bloodType: 0
-  photo: {fileID: 0}
-  heartBeat: 61
+  age: 34
+  bloodType: 2
+  photo: {fileID: -2479786626458476681, guid: 52f6dcdf2b8b74042ad50106cf424377, type: 3}
+  heartBeat: 75
   bloodPressure:
-    upper: 120
+    upper: 125
     bottom: 80
   temperature: 36.6

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: GrigoriiProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Grigorii
-  height: 175
-  weight: 70
+  nameAndSurname: Gregory Barbich
+  height: 174
+  weight: 73
   sex: 0
-  age: 25
+  age: 39
   bloodType: 0
-  photo: {fileID: 0}
+  photo: {fileID: -1499900109277536864, guid: 6a843fa93f05149f1b6f2b4262907b12, type: 3}
   heartBeat: 60
   bloodPressure:
-    upper: 120
-    bottom: 80
-  temperature: 36.6
+    upper: 130
+    bottom: 90
+  temperature: 36.7
