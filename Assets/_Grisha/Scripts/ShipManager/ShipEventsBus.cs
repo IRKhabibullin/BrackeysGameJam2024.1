@@ -4,15 +4,14 @@ public static class ShipEventsBus
 {
     // Manipulation with fuel tank
     // For using: ShipsEventsBus.AddFuel?.Invoke(INT_AMOUNT_OF_FUEL)
-    public static Action<int> RemoveFuel;
-    public static Action<int> AddFuel;
+    public static Action RemoveFuel;
+    public static Action AddFuel;
 
     public static Action<float> OxygenAmountUpdated;  // in %
     public static Action OxygenHasRunOut;
-
-    /// bool = isAllShipMembers on the ship
+    
     public static Action<float> FuelAmountUpdated;  // in %
-    public static Action<bool> FuelBecameFull;
+    public static Action<bool> FuelBecameFull;  // bool = isAllShipMembers on the ship
 
     // Events from UI
     public static Action LettingShipMemberIn;

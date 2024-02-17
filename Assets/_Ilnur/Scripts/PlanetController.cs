@@ -103,12 +103,12 @@ public class PlanetController : MonoBehaviour
     private void OnEnable()
     {
         PlanetEventsBus.ShipMemberGoingGathering += AddShipMember;
-        PlanetEventsBus.ShipMemberComingBack += SendShipMemberBack;
+        PlanetEventsBus.ShipMemberComingToShip += SendShipMemberBack;
     }
 
     private void OnDisable()
     {
         PlanetEventsBus.ShipMemberGoingGathering -= AddShipMember;
-        PlanetEventsBus.ShipMemberComingBack -= SendShipMemberBack;
+        PlanetEventsBus.ShipMemberComingToShip -= SendShipMemberBack;
     }
 }

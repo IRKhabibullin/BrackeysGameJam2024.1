@@ -6,7 +6,7 @@ public class ShipManager : MonoBehaviour
 {
     // Oxygen timer = time of the round in seconds 
     [SerializeField] int maxOxygenTime = 600;
-    [SerializeField] float currentOxygenTime = 0;
+    [SerializeField] float currentOxygenTime;
     [SerializeField] int requiredAmountOfFuel = 10;
     [SerializeField] float currentAmountOfFuel;
     public List<ShipMember> shipMembers;
@@ -19,29 +19,47 @@ public class ShipManager : MonoBehaviour
     private void CheckShipMember(ShipMember shipMember)
     {
         _shipMemberAtTheDoors = shipMember;
+        _shipMemberAtTheDoors.gameObject.SetActive(true);
         
         ShipEventsBus.ShowShipMemberProfileOnUI?.Invoke(shipMember.shipMemberProfile);
-
     }
 
+    [ContextMenu("LetShipMemberIn")]
     private void LetShipMemberIn()
     {
         if (IsTankFull)
         {
             // we just stay at ship ready to fly off the planet
             shipMembers.Add(_shipMemberAtTheDoors);
+            PlanetEventsBus.ShipMemberComingToShip?.Invoke();
         }
         else
         {
-            
-            PlanetEventsBus.ShipMemberComingBack?.Invoke();
+            if (_shipMemberAtTheDoors.IsFinalInfectionStage)
+            {
+                // we let the fully infected ship member in. He starts to break things and wastes fuel tank
+                ShipEventsBus.RemoveFuel?.Invoke();
+                ClipEventsBus.LettingInfectedShipMemberIn?.Invoke();
+                Debug.Log("Let in infected");
+                KillShipMember();
+            }
+            else
+            {
+                ShipEventsBus.AddFuel?.Invoke();
+                ClipEventsBus.LettingShipMemberIn?.Invoke();
+                Debug.Log("Let in normal");
+                _shipMemberAtTheDoors.gameObject.SetActive(false);
+                PlanetEventsBus.ShipMemberGoingGathering?.Invoke(_shipMemberAtTheDoors);
+            }
         }
+        
+        _shipMemberAtTheDoors = null;
     }
 
-    private void BurnShipMember()
+    [ContextMenu("KillShipMember")]
+    private void KillShipMember()
     {
-        aliveCrewNumber -= 1;
-        ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(aliveCrewNumber);
+        ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(--aliveCrewNumber);
     }
 
     void SendAllShipMembers()
@@ -50,11 +68,12 @@ public class ShipManager : MonoBehaviour
 
         foreach (var shipMember in shipMembers)
         {
-            PlanetEventsBus.ShipMemberGoingGathering(shipMember);
+            shipMember.gameObject.SetActive(false);
+            PlanetEventsBus.ShipMemberGoingGathering?.Invoke(shipMember);
         }
         shipMembers.Clear();
 
-        PlanetEventsBus.ShipMemberComingBack?.Invoke();
+        PlanetEventsBus.ShipMemberComingToShip?.Invoke();
     }
 
     private IEnumerator StartTimerCoroutine()
@@ -71,22 +90,23 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.OxygenHasRunOut?.Invoke();
     }
 
-    void RemoveFuel(int fuelToRemove)
+    void RemoveFuel()
     {
         if (currentAmountOfFuel <= 0)
             return;
 
-        currentAmountOfFuel -= fuelToRemove;
+        currentAmountOfFuel--;
         ShipEventsBus.FuelAmountUpdated?.Invoke(currentAmountOfFuel / requiredAmountOfFuel);
     }
-    void AddFuel(int fuelToAdd)
+    void AddFuel()
     {
         if (currentAmountOfFuel >= requiredAmountOfFuel)
             return;
 
-        currentAmountOfFuel += fuelToAdd;
+        currentAmountOfFuel++;
         if(IsTankFull)
         {
+            Debug.Log("FuelBecameFull");
             ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == aliveCrewNumber);
         }
         ShipEventsBus.FuelAmountUpdated?.Invoke(currentAmountOfFuel / requiredAmountOfFuel);
@@ -96,7 +116,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.AddFuel += AddFuel;
         ShipEventsBus.RemoveFuel += RemoveFuel;
         ShipEventsBus.LettingShipMemberIn += LetShipMemberIn;
-        ShipEventsBus.BurningShipMember += BurnShipMember;
+        ShipEventsBus.BurningShipMember += KillShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
     }
@@ -105,7 +125,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.AddFuel -= AddFuel;
         ShipEventsBus.RemoveFuel -= RemoveFuel;
         ShipEventsBus.LettingShipMemberIn -= LetShipMemberIn;
-        ShipEventsBus.BurningShipMember -= BurnShipMember;
+        ShipEventsBus.BurningShipMember -= KillShipMember;
         GameEventsBus.ShipMembersGoingGathering -= SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack -= CheckShipMember;
     }
