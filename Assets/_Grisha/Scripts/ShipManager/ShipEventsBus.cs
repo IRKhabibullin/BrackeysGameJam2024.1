@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class ShipEventsBus 
 {
@@ -16,6 +17,7 @@ public static class ShipEventsBus
     // Events from UI
     public static Action LettingShipMemberIn;
     public static Action BurningShipMember;
+    public static Action<Vector3> MoveXRay;
 
     // Data refreshers for UI
     public static Action<SO_ShipMemberProfile> ShowShipMemberProfileOnUI;
