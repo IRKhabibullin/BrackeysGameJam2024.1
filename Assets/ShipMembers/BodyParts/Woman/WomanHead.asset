@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c31683bfcf84d4a8db6fc1763ddb5d, type: 3}
   m_Name: WomanHead
   m_EditorClassIdentifier: 
-  healthy: {fileID: 0}
-  damaged: {fileID: 0}
-  xRay: {fileID: 0}
-  xRayInfected: {fileID: 0}
+  healthy: {fileID: -4673709225900413409, guid: f2f44fde8a093fe4b8ecc9ef9ae3cb71, type: 3}
+  damaged: {fileID: -5797331703663435130, guid: e91473f972758cd449655aa34a70cc25, type: 3}
+  xRay: {fileID: 6656487246616145786, guid: c44b8d43022ec3c4e810fe9af3b8ac13, type: 3}
+  xRayInfected: {fileID: 7348522234047008151, guid: 92695c5ecec33024f91b28bf7f5bdeae, type: 3}

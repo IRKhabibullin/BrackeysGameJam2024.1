@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 5396302961745182972}
   - component: {fileID: 8735439823691812832}
   - component: {fileID: 7593421853374435073}
+  - component: {fileID: 2184598353998539852}
   m_Layer: 5
   m_Name: FlyButton
   m_TagString: Untagged
@@ -596,7 +597,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8735439823691812832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2184598353998539852}
+        m_TargetAssemblyTypeName: FlyOffButton, Assembly-CSharp
+        m_MethodName: FlyOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2184598353998539852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501894124606346861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0cd0ce68904028a36d1b2cb582cd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7710895211391186489
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,13 +755,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9006602358719296188, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8285124098612433486}
   m_SourcePrefab: {fileID: 100100000, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
 --- !u!224 &8003997278230660731 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6931502332833313374, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
   m_PrefabInstance: {fileID: 1090519528493020197}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8349582019861890713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9006602358719296188, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+  m_PrefabInstance: {fileID: 1090519528493020197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8285124098612433486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349582019861890713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ada6b698a74c0e864b0918cb671917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygenTank: {fileID: 8503212270968633223}
+--- !u!114 &8503212270968633223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8728881223153222562, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+  m_PrefabInstance: {fileID: 1090519528493020197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6608151809983395986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -880,8 +937,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9006602358719296188, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4320149216926957190}
   m_SourcePrefab: {fileID: 100100000, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+--- !u!114 &2492716241010703152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8728881223153222562, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+  m_PrefabInstance: {fileID: 6608151809983395986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2830862212753689134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9006602358719296188, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
+  m_PrefabInstance: {fileID: 6608151809983395986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4320149216926957190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830862212753689134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ccbb1e04c546349f76807609d7e368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelTank: {fileID: 2492716241010703152}
 --- !u!224 &4288970194035411660 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6931502332833313374, guid: 40109fa79f59341dabb6d5bd453a0f11, type: 3}
