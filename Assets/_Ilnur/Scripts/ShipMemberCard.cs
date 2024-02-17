@@ -35,15 +35,15 @@ public class ShipMemberCard : MonoBehaviour
     {
         nameAndSurname.SetText(so.nameAndSurname);
         photo.sprite = so.photo;
-        height.SetText($"Height: {so.height}");
-        weight.SetText($"Weight: {so.weight}");
-        bloodType.SetText($"Blood type: {so.bloodType}");
-        sex.SetText($"Gender: {so.sex}");
-        age.SetText($"Age: {so.age}");
+        height.SetText($"{so.height}");
+        weight.SetText($"{so.weight}");
+        bloodType.SetText($"{so.bloodType}");
+        sex.SetText($"{so.sex}");
+        age.SetText($"{so.age}");
 
-        heartBeat.SetText($"Pulse: {so.heartBeat}");
-        bloodPressure.SetText($"Pressure: {so.bloodPressure.bottom}/{so.bloodPressure.upper}");
-        temperature.SetText($"Temperature: {so.temperature:0.0}");
+        heartBeat.SetText($"{so.heartBeat}");
+        bloodPressure.SetText($"{so.bloodPressure.bottom}/{so.bloodPressure.upper}");
+        temperature.SetText($"{so.temperature:0.0}");
     }
     private void OnEnable()
     {

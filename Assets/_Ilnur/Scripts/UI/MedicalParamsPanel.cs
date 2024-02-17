@@ -71,6 +71,6 @@ public class MedicalParamsPanel : MonoBehaviour
 
     private void ToggleTemperatureSwitch(bool switchValue)
     {
-        temperatureValue.SetText(switchValue && _shipMemberMedParams != null ? _shipMemberMedParams.temperature.ToString() : "");
+        temperatureValue.SetText(switchValue && _shipMemberMedParams != null ? _shipMemberMedParams.temperature.ToString("F1") : "");
     }
 }
