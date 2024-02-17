@@ -18,7 +18,7 @@ public class ShipManager : MonoBehaviour
     {
         _shipMemberAtTheDoors = shipMember;
         
-        ShipEventsBus.ShowShipMemberProfileOnUI(shipMember.shipMemberProfile);
+        ShipEventsBus.ShowShipMemberProfileOnUI?.Invoke(shipMember.shipMemberProfile);
 
     }
 
@@ -82,7 +82,6 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.BurningShipMember += BurnShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
-        //
     }
     void OnDisable()
     {
