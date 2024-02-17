@@ -101,7 +101,7 @@ public class ShipManager : MonoBehaviour
         while (currentOxygenTime > 0)
         {
             yield return oxygenUpdatePeriod;
-            ShipEventsBus.OxygenAmountUpdated?.Invoke(currentOxygenTime / maxOxygenTime);
+            ShipEventsBus.OxygenAmountUpdated?.Invoke(--currentOxygenTime / maxOxygenTime);
         }
 
         ShipEventsBus.OxygenHasRunOut?.Invoke();
