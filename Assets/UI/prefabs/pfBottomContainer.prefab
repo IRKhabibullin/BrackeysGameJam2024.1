@@ -2674,6 +2674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5729471198587932710}
+  - component: {fileID: 6887482220186670170}
   m_Layer: 5
   m_Name: pfInject
   m_TagString: Untagged
@@ -2702,6 +2703,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 436.29, y: 208.4163}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &6887482220186670170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673164227469872438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d7460d70bbc47a3bc1a088ab302c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  injectionButton: {fileID: 154969805244396036}
+  injectionsNumber: {fileID: 2193380725626280327}
 --- !u!1 &7721949775062351642
 GameObject:
   m_ObjectHideFlags: 0
