@@ -16,6 +16,30 @@ public class ClipsManager : MonoBehaviour
     }
     #endregion
 
+    #region RunInfectedShipMember
+    private void RunLettingInfectedShipMemberIn()
+    {
+        _animator.SetTrigger("RunInfectedShipMember");
+    }
+
+    private void FinishLettingInfectedShipMemberIn()
+    {
+        PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+    }
+    #endregion
+
+    #region RunLettingShipMemberIn
+    private void RunLettingShipMemberIn()
+    {
+        _animator.SetTrigger("RunLettingShipMemberIn");
+    }
+
+    private void FinishLettingShipMemberIn()
+    {
+        PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+    }
+    #endregion
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -23,11 +47,15 @@ public class ClipsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventsBus.GameStarted += RunIntro;
+        ClipEventsBus.RunningIntro += RunIntro;
+        ClipEventsBus.LettingInfectedShipMemberIn += RunLettingInfectedShipMemberIn;
+        ClipEventsBus.LettingShipMemberIn += RunLettingShipMemberIn;
     }
 
     private void OnDisable()
     {
-        GameEventsBus.GameStarted -= RunIntro;
+        ClipEventsBus.RunningIntro -= RunIntro;
+        ClipEventsBus.LettingInfectedShipMemberIn -= RunLettingInfectedShipMemberIn;
+        ClipEventsBus.LettingShipMemberIn -= RunLettingShipMemberIn;
     }
 }

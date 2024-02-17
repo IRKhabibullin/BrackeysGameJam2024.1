@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
@@ -80,37 +79,36 @@ public class ShipMember : MonoBehaviour
     }
     public void ApplyDamage()
     {
-        List<BodyPart> _healtyBodyParts = _bodyPartsMap.Keys.ToList();
-        _healtyBodyParts.RemoveAll(item => damagedBodyParts.Contains(item));
+        var healthyBodyParts = _bodyPartsMap.Keys.ToList();
+        healthyBodyParts.RemoveAll(item => damagedBodyParts.Contains(item));
 
-        int _bodyPartToDamageIndex = Random.Range(0, _healtyBodyParts.Count);
+        var bodyPartToDamageIndex = Random.Range(0, healthyBodyParts.Count);
 
-        damagedBodyParts.Add(_healtyBodyParts[_bodyPartToDamageIndex]);
+        damagedBodyParts.Add(healthyBodyParts[bodyPartToDamageIndex]);
     }
     public void ApplyInfection()
     {
-        List<BodyPart> _bodyPartsToInfect = new() 
+        List<BodyPart> bodyPartsToInfect = new() 
         {
             BodyPart.RightHand, BodyPart.LeftHand, 
             BodyPart.RightLeg, BodyPart.LeftLeg
         };
-        int _bodyPartToInfectIndex = Random.Range(0, _bodyPartsToInfect.Count);
+        var bodyPartToInfectIndex = Random.Range(0, bodyPartsToInfect.Count);
 
-        infectedBodyPart = _bodyPartsToInfect[_bodyPartToInfectIndex];
+        infectedBodyPart = bodyPartsToInfect[bodyPartToInfectIndex];
     }
     public void MoveInfection()
     {
-        if(infectedBodyPart == BodyPart.Head)
+        switch (infectedBodyPart)
         {
-            return;
-        }
-        else if(infectedBodyPart == BodyPart.Torso)
-        {
-            infectedBodyPart = BodyPart.Head;
-        }
-        else
-        {
-            infectedBodyPart = BodyPart.Torso;
+            case BodyPart.Head:
+                return;
+            case BodyPart.Torso:
+                infectedBodyPart = BodyPart.Head;
+                break;
+            default:
+                infectedBodyPart = BodyPart.Torso;
+                break;
         }
     }
     public void SetDefaultMedParams()
