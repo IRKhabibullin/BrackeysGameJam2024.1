@@ -145,6 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506463869014486727}
+  - component: {fileID: 587068248957451667}
   m_Layer: 5
   m_Name: pfCharecterInfo
   m_TagString: Untagged
@@ -177,6 +178,29 @@ RectTransform:
   m_AnchoredPosition: {x: -3.864502, y: 212.54126}
   m_SizeDelta: {x: 318.9818, y: 514.7774}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &587068248957451667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285601217486449347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a291cffd8781242a358ec8b85a8176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 0}
+  nameAndSurname: {fileID: 4158835636249621991}
+  photo: {fileID: 2756291174265554217}
+  height: {fileID: 3621550408872335253}
+  weight: {fileID: 1546410826426323821}
+  sex: {fileID: 4294762046271709512}
+  bloodType: {fileID: 7440131539587466643}
+  age: {fileID: 6343148435138921071}
+  heartBeat: {fileID: 7314231358943362412}
+  bloodPressure: {fileID: 438970317551208993}
+  temperature: {fileID: 4949086972824757716}
 --- !u!1 &613026599265323910
 GameObject:
   m_ObjectHideFlags: 0
