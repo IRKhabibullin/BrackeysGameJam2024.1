@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClipsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8931891207737126033, guid: cb2c198bf4aa62c48bfd04bb02c5d9b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1161,8 +1165,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 265495378}
   - {fileID: 270012327}
+  - {fileID: 265495378}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
