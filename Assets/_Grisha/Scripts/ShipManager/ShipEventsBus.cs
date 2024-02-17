@@ -18,9 +18,11 @@ public static class ShipEventsBus
     public static Action LettingShipMemberIn;
     public static Action BurningShipMember;
     public static Action ResettingPanel;
+    public static Action HealingShipMember;
     public static Action<Vector3> MoveXRay;
 
     // Data refreshers for UI
     public static Action<SO_ShipMemberProfile> ShowShipMemberProfileOnUI;
     public static Action<int> ShowAliveCrewNumberOnUI;
+    public static Action<int> ShowInjectionsNumberOnUI;
 }

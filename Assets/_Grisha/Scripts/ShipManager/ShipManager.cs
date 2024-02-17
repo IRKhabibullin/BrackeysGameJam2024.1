@@ -12,6 +12,8 @@ public class ShipManager : MonoBehaviour
     public List<ShipMember> shipMembers;
     private int aliveCrewNumber;
 
+    private int injectionsNumber = 0;
+
     private ShipMember _shipMemberAtTheDoors;
     private bool IsTankFull => currentAmountOfFuel >= requiredAmountOfFuel;
     private WaitForSeconds oxygenUpdatePeriod;
@@ -60,11 +62,23 @@ public class ShipManager : MonoBehaviour
     [ContextMenu("KillShipMember")]
     private void KillShipMember()
     {
+        if(_shipMemberAtTheDoors.IsInfected)
+        {
+            ShipEventsBus.ShowInjectionsNumberOnUI?.Invoke(++injectionsNumber);
+        }
+
         _shipMemberAtTheDoors.gameObject.SetActive(false);
         ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(--aliveCrewNumber);
         ClipEventsBus.BurningShipMember?.Invoke();
     }
-
+    private void HealShipMember()
+    {
+        if(injectionsNumber > 0)
+        {
+            ShipEventsBus.ShowInjectionsNumberOnUI?.Invoke(--injectionsNumber);
+            _shipMemberAtTheDoors.ApplyHeal();
+        }
+    }
     void SendAllShipMembers()
     {
         StartCoroutine(StartTimerCoroutine());
@@ -120,6 +134,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.RemoveFuel += RemoveFuel;
         ShipEventsBus.LettingShipMemberIn += LetShipMemberIn;
         ShipEventsBus.BurningShipMember += KillShipMember;
+        ShipEventsBus.HealingShipMember += HealShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
     }
@@ -129,6 +144,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.RemoveFuel -= RemoveFuel;
         ShipEventsBus.LettingShipMemberIn -= LetShipMemberIn;
         ShipEventsBus.BurningShipMember -= KillShipMember;
+        ShipEventsBus.HealingShipMember -= HealShipMember;
         GameEventsBus.ShipMembersGoingGathering -= SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack -= CheckShipMember;
     }
