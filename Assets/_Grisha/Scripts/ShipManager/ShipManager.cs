@@ -18,6 +18,7 @@ public class ShipManager : MonoBehaviour
 
     private void CheckShipMember(ShipMember shipMember)
     {
+        ShipEventsBus.ResettingPanel?.Invoke();
         _shipMemberAtTheDoors = shipMember;
         _shipMemberAtTheDoors.gameObject.SetActive(true);
         
@@ -61,6 +62,7 @@ public class ShipManager : MonoBehaviour
     {
         _shipMemberAtTheDoors.gameObject.SetActive(false);
         ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(--aliveCrewNumber);
+        ClipEventsBus.BurningShipMember?.Invoke();
     }
 
     void SendAllShipMembers()

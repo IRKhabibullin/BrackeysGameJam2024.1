@@ -28,7 +28,6 @@ public class ClipsManager : MonoBehaviour
 
     private void FinishLettingInfectedShipMemberIn()
     {
-        _container.SetActive(false);
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
     }
     #endregion
@@ -42,8 +41,25 @@ public class ClipsManager : MonoBehaviour
 
     private void FinishLettingShipMemberIn()
     {
-        _container.SetActive(false);
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+    }
+    #endregion
+
+    #region RunBurningShipMember
+    private void RunBurningShipMember()
+    {
+        _container.SetActive(true);
+        _animator.SetTrigger("RunBurningShipMember");
+    }
+
+    private void FinishBurningShipMember()
+    {
+        PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+    }
+
+    private void DisableClip()
+    {
+        _container.SetActive(false);
     }
     #endregion
 
@@ -52,6 +68,7 @@ public class ClipsManager : MonoBehaviour
         ClipEventsBus.RunningIntro += RunIntro;
         ClipEventsBus.LettingInfectedShipMemberIn += RunLettingInfectedShipMemberIn;
         ClipEventsBus.LettingShipMemberIn += RunLettingShipMemberIn;
+        ClipEventsBus.BurningShipMember += RunBurningShipMember;
     }
 
     private void OnDisable()
@@ -59,5 +76,6 @@ public class ClipsManager : MonoBehaviour
         ClipEventsBus.RunningIntro -= RunIntro;
         ClipEventsBus.LettingInfectedShipMemberIn -= RunLettingInfectedShipMemberIn;
         ClipEventsBus.LettingShipMemberIn -= RunLettingShipMemberIn;
+        ClipEventsBus.BurningShipMember -= RunBurningShipMember;
     }
 }

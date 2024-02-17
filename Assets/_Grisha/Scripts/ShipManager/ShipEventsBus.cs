@@ -17,6 +17,7 @@ public static class ShipEventsBus
     // Events from UI
     public static Action LettingShipMemberIn;
     public static Action BurningShipMember;
+    public static Action ResettingPanel;
     public static Action<Vector3> MoveXRay;
 
     // Data refreshers for UI

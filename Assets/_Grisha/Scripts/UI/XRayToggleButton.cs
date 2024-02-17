@@ -9,10 +9,19 @@ public class XRayToggleButton : MonoBehaviour
     private void OnEnable()
     {
         xRaySwitch.onValueChanged.AddListener(ToggleXRay);
+        ShipEventsBus.ResettingPanel += TurnOffXRay;
     }
+
+    private void TurnOffXRay()
+    {
+        xRaySwitch.isOn = false;
+        xRayObject.SetActive(false);
+    }
+
     private void OnDisable()
     {
         xRaySwitch.onValueChanged.RemoveListener(ToggleXRay);
+        ShipEventsBus.ResettingPanel -= TurnOffXRay;
     }
 
     private void ToggleXRay(bool value)
