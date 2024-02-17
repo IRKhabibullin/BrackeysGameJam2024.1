@@ -76,7 +76,7 @@ public class ShipManager : MonoBehaviour
         if(injectionsNumber > 0)
         {
             ShipEventsBus.ShowInjectionsNumberOnUI?.Invoke(--injectionsNumber);
-            _shipMemberAtTheDoors.infectedBodyPart = BodyPart.None;
+            _shipMemberAtTheDoors.ApplyHeal();
         }
     }
     void SendAllShipMembers()

@@ -97,6 +97,11 @@ public class ShipMember : MonoBehaviour
 
         infectedBodyPart = bodyPartsToInfect[bodyPartToInfectIndex];
     }
+    public void ApplyHeal()
+    {
+        infectedBodyPart = BodyPart.None;
+        RedrawBodyParts();
+    }
     public void MoveInfection()
     {
         switch (infectedBodyPart)
