@@ -143,7 +143,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipMemberProfile: {fileID: 0}
-  Head: {fileID: 11400000, guid: 32753f719e6dea548a85cc1840d0cc1e, type: 2}
+  modifiedMedParams:
+    heartBeat: 0
+    bloodPressure:
+      upper: 0
+      bottom: 0
+    temperature: 0
+  Head: {fileID: 11400000, guid: 1dedf02fdef2e44a6b3a044e53580677, type: 2}
   Torso: {fileID: 11400000, guid: d345b63f39c35eb43a048d8881ce7a04, type: 2}
   RightHand: {fileID: 11400000, guid: f113e81cf5e160b47943c8ed9e60a279, type: 2}
   LeftHand: {fileID: 11400000, guid: c109c0c8710ba76408a5809a226f50dc, type: 2}

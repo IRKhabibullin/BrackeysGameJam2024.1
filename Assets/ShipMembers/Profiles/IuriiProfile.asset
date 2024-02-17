@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36986ea2c5d848e1a86ebbdd6df1b08, type: 3}
   m_Name: IuriiProfile
   m_EditorClassIdentifier: 
-  nameAndSurname: Iurii
-  height: 175
-  weight: 70
+  nameAndSurname: Yuriy Bulavson
+  height: 184
+  weight: 75
   sex: 0
-  age: 25
-  bloodType: 0
-  photo: {fileID: 0}
-  heartBeat: 62
+  age: 44
+  bloodType: 3
+  photo: {fileID: 1563395752623910796, guid: ac610b11d91ee4b6890182706fa370ea, type: 3}
+  heartBeat: 63
   bloodPressure:
     upper: 120
-    bottom: 80
-  temperature: 36.6
+    bottom: 90
+  temperature: 36.7
