@@ -53,7 +53,6 @@ public class ShipManager : MonoBehaviour
             {
                 ShipEventsBus.AddFuel?.Invoke();
                 ClipEventsBus.LettingShipMemberIn?.Invoke();
-
                 if (!IsTankFull)
                 {
                     _shipMemberAtTheDoors.gameObject.SetActive(false);
@@ -68,7 +67,8 @@ public class ShipManager : MonoBehaviour
             shipMembers.Add(_shipMemberAtTheDoors);
             _shipMemberAtTheDoors.gameObject.SetActive(false);
             _shipMemberAtTheDoors = null;
-            PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+            ClipEventsBus.LettingInfectedShipMemberIn?.Invoke();
+            Debug.Log($"New one {_shipMemberAtTheDoors}");
         }
     }
 
