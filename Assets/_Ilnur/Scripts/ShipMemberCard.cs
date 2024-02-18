@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class ShipMemberCard : MonoBehaviour
 {
     [SerializeField] private SO_ShipMemberProfile profile;
+    [SerializeField] private TextMeshProUGUI deadCrew;
+    [SerializeField] private TextMeshProUGUI aliveCrew;
 
     [Header("Member data")]
     [SerializeField] private TextMeshProUGUI nameAndSurname;
@@ -45,12 +47,20 @@ public class ShipMemberCard : MonoBehaviour
         bloodPressure.SetText($"{so.bloodPressure.bottom}/{so.bloodPressure.upper}");
         temperature.SetText($"{so.temperature:0.0}");
     }
+    private void RefreshCrewStatus(int _aliveCrew)
+    {
+        aliveCrew.SetText(_aliveCrew.ToString());
+        var _deadCrew = 7 - _aliveCrew;
+        deadCrew.SetText(_aliveCrew.ToString());
+    }
     private void OnEnable()
     {
         ShipEventsBus.ShowShipMemberProfileOnUI += RefreshProfile;
+        ShipEventsBus.RefreshAliveCrew += RefreshCrewStatus;
     }
     private void OnDisable()
     {
         ShipEventsBus.ShowShipMemberProfileOnUI -= RefreshProfile;
+        ShipEventsBus.RefreshAliveCrew -= RefreshCrewStatus;
     }
 }
