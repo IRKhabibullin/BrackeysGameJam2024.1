@@ -18,9 +18,9 @@ MonoBehaviour:
   sex: 0
   age: 32
   bloodType: -3
-  photo: {fileID: 1248301920996441117, guid: c9b3ad86ae3de4497bdb3d45fb3fcc04, type: 3}
+  photo: {fileID: -1499900109277536864, guid: 6a843fa93f05149f1b6f2b4262907b12, type: 3}
   heartBeat: 62
   bloodPressure:
-    upper: 110
-    bottom: 85
+    upper: 115
+    bottom: 66
   temperature: 36.6
