@@ -27,7 +27,6 @@ public class ShipManager : MonoBehaviour
 
     private void CheckShipMember(ShipMember shipMember)
     {
-        ShipEventsBus.ResettingPanel?.Invoke();
         _shipMemberAtTheDoors = shipMember;
         _shipMemberAtTheDoors.gameObject.SetActive(true);
         
@@ -39,6 +38,7 @@ public class ShipManager : MonoBehaviour
     {
         if (!_shipMemberAtTheDoors)
             return;
+        ShipEventsBus.ResettingPanel?.Invoke();
         
         if (!IsTankFull)
         {
@@ -77,6 +77,7 @@ public class ShipManager : MonoBehaviour
     {
         if (!_shipMemberAtTheDoors)
             return;
+        ShipEventsBus.ResettingPanel?.Invoke();
 
         if(_shipMemberAtTheDoors.IsInfected)
         {
