@@ -67,8 +67,7 @@ public class ShipManager : MonoBehaviour
             shipMembers.Add(_shipMemberAtTheDoors);
             _shipMemberAtTheDoors.gameObject.SetActive(false);
             _shipMemberAtTheDoors = null;
-            ClipEventsBus.LettingInfectedShipMemberIn?.Invoke();
-            Debug.Log($"New one {_shipMemberAtTheDoors}");
+            ClipEventsBus.LettingShipMemberIn?.Invoke();
         }
     }
 
