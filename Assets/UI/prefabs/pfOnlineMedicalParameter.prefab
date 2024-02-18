@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283517750
-  m_fontColor: {r: 0.21176472, g: 0.29411766, b: 0.31764707, a: 1}
+    rgba: 4285293641
+  m_fontColor: {r: 0.28635636, g: 0.39382344, b: 0.4245283, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -378,10 +378,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSwitch: {fileID: 7523705876617968561}
   pulseValue: {fileID: 3601348737090877214}
+  pulseOnAudio: {fileID: 0}
+  pulseOffAudio: {fileID: 0}
   pressureSwitch: {fileID: 370502326888434574}
   pressureValue: {fileID: 6680901887613159201}
+  pressureOnAudio: {fileID: 0}
+  pressureOffAudio: {fileID: 0}
   temperatureSwitch: {fileID: 5819737159975327351}
   temperatureValue: {fileID: 671248710389668568}
+  temperatureOnAudio: {fileID: 0}
+  temperatureOffAudio: {fileID: 0}
 --- !u!1001 &4485281370945121311
 PrefabInstance:
   m_ObjectHideFlags: 0

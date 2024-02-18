@@ -149,8 +149,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283517750
-  m_fontColor: {r: 0.21176472, g: 0.29411766, b: 0.31764707, a: 1}
+    rgba: 4286280275
+  m_fontColor: {r: 0.32453722, g: 0.44633326, b: 0.4811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -622,6 +622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0cd0ce68904028a36d1b2cb582cd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 0}
+  audioSource: {fileID: 0}
+  flyOffClip: {fileID: 0}
 --- !u!1 &7710895211391186489
 GameObject:
   m_ObjectHideFlags: 0
