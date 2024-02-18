@@ -191,6 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 0}
+  deadCrew: {fileID: 0}
+  aliveCrew: {fileID: 0}
   nameAndSurname: {fileID: 4158835636249621991}
   photo: {fileID: 2756291174265554217}
   height: {fileID: 3621550408872335253}
@@ -1164,7 +1166,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00088500977, y: 0.000030517578}
-  m_SizeDelta: {x: 52.4469, y: 19.293}
+  m_SizeDelta: {x: 59.6351, y: 19.293}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7441072040634087146
 CanvasRenderer:
@@ -1194,7 +1196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99
+  m_text: 144/144
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 000f3962d7e2f4c4bb7b853fba7e4749, type: 2}
   m_sharedMaterial: {fileID: -2037752389749957042, guid: 000f3962d7e2f4c4bb7b853fba7e4749, type: 2}
