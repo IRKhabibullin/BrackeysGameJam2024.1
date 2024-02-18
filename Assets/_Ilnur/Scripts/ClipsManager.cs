@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ClipsManager : MonoBehaviour
@@ -5,18 +6,31 @@ public class ClipsManager : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _container;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private TextMeshProUGUI subtitles;
 
     [SerializeField] private AudioClip goodEndingClip;
     [SerializeField] private AudioClip egoistEndingClip;
     [SerializeField] private AudioClip alienEndingClip;
     [SerializeField] private AudioClip noOxygenEndingClip;
     [SerializeField] private AudioClip aloneEndingClip;
+    [SerializeField] private ClipsSubtitles subTexts;
 
     #region Intro
     private void RunIntro()
     {
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("Intro1"));
         _animator.SetTrigger("RunIntro");
+    }
+
+    private void SetSecondIntroText()
+    {
+        subtitles.SetText(subTexts.GetTextByKey("Intro2"));
+    }
+
+    private void SetThirdIntroText()
+    {
+        subtitles.SetText(subTexts.GetTextByKey("Intro3"));
     }
 
     private void FinishIntro()
@@ -56,12 +70,14 @@ public class ClipsManager : MonoBehaviour
     private void RunBurnedNormalMember()
     {
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("BurnedNormal"));
         _animator.SetTrigger("RunBurnedNormalMember");
     }
 
     private void RunBurnedInfectedMember()
     {
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("BurnedInfected"));
         _animator.SetTrigger("RunBurnedInfectedMember");
     }
 
@@ -69,11 +85,13 @@ public class ClipsManager : MonoBehaviour
     {
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
     }
+    #endregion
 
     private void RunGoodEnding()
     {
         audioSource.clip = goodEndingClip;
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("GoodEnding"));
         _animator.SetTrigger("RunGoodEnding");
     }
 
@@ -81,6 +99,7 @@ public class ClipsManager : MonoBehaviour
     {
         audioSource.clip = egoistEndingClip;
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("EgoistEnding"));
         _animator.SetTrigger("RunEgoistEnding");
     }
 
@@ -95,6 +114,7 @@ public class ClipsManager : MonoBehaviour
     {
         audioSource.clip = noOxygenEndingClip;
         _container.SetActive(true);
+        subtitles.SetText(subTexts.GetTextByKey("NoOxygenEnding"));
         _animator.SetTrigger("RunNoOxygenEnding");
     }
 
@@ -114,7 +134,6 @@ public class ClipsManager : MonoBehaviour
     {
         _container.SetActive(false);
     }
-    #endregion
 
     private void OnEnable()
     {

@@ -13,9 +13,35 @@ MonoBehaviour:
   m_Name: ClipSubtitles
   m_EditorClassIdentifier: 
   subtitles:
-  - clipName: Intro1
-    subtitles: 'The year 2224. Galaxy NGC 2419. The orbit of the planet Kepler-1638.
-      The ship "Astra", specializing in the exploration of planets in remote corners
-      of space, encounters an unexpected incident. As a result of the accident, most
-      of the fuel has been lost. The captain of the ship makes a decision: to go
-      to the nearest planet Kepler-1638 to get the necessary resources for refueling.'
+  - subKey: Intro1
+    subtitles: "In the year\_2224, in the galaxy\_NGC 2419, aboard the planet\_Kepler-1638,
+      the spaceship\_\u201CAstra\u201D\u2014specialized in exploring planets in the
+      remote corners of space\u2014suffered a mishap.\_Small asteroids collided with
+      the storage compartment, resulting in the loss of a significant portion of
+      its fuel.\L\LThe ship\u2019s captain makes a decision - to head for the nearest
+      planet,\_Kepler-1638, in order to procure the necessary resources for refueling."
+  - subKey: Intro2
+    subtitles: Upon touchdown on the planet Kepler-1638, the resource reconnaissance
+      mission commenced. Seven crew members were selected for this vital expedition
+      aboard the spacecraft.
+  - subKey: Intro3
+    subtitles: "The ship\u2019s crew members must swiftly locate fuel resources on
+      the planet\u2019s surface, their mission critical."
+  - subKey: BurnedInfected
+    subtitles: "The medical personnel made the decision to eliminate the potentially
+      infected crew member. The fire destroyed the victim\u2019s body, but the parasite
+      inside remained intact. Using a sample based on it, we are developed a vaccine
+      that can be used to treat other crew members."
+  - subKey: BurnedNormal
+    subtitles: The medical personnel made the decision to eliminate the potentially
+      infected crew member. The fire destroyed the body, but the parasite was not
+      found in the remains.
+  - subKey: GoodEnding
+    subtitles: Mission Complete. Astra successfully left the planet. During the operation,
+      all non-infected crew members were evacuated.
+  - subKey: EgoistEnding
+    subtitles: Mission Complete. Astra successfully left the planet. However, during
+      the operation, not all crew members managed to leave the planet.
+  - subKey: NoOxygenEnding
+    subtitles: Mission Complete. The oxygen supply ran out before we were able to
+      collect the required amount of fuel and fly away. All crew members died.
