@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     }
     void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Game");
     }
     void OnDisable()
     {

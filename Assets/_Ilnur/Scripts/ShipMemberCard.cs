@@ -51,7 +51,7 @@ public class ShipMemberCard : MonoBehaviour
     {
         aliveCrew.SetText(_aliveCrew.ToString());
         var _deadCrew = 7 - _aliveCrew;
-        deadCrew.SetText(_aliveCrew.ToString());
+        deadCrew.SetText(_deadCrew.ToString());
     }
     private void OnEnable()
     {

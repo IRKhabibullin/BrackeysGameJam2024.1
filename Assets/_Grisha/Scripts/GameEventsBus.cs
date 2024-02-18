@@ -9,4 +9,6 @@ public static class GameEventsBus
     // Gameplay events
     public static Action ShipMembersGoingGathering;
     public static Action FlyingOff;
+
+    public static Action CallingFinishGame;
 }

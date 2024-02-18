@@ -9,13 +9,20 @@ public class ShipManager : MonoBehaviour
     [SerializeField] float currentOxygenTime;
     [SerializeField] int requiredAmountOfFuel = 10;
     [SerializeField] float currentAmountOfFuel;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip womanBurnSound;
+    [SerializeField] private AudioClip manBurnSound;
+
     public List<ShipMember> shipMembers;
     private int aliveCrewNumber = 7;
 
     private int injectionsNumber = 0;
 
     private ShipMember _shipMemberAtTheDoors;
-    private bool IsTankFull => currentAmountOfFuel >= requiredAmountOfFuel;
+    public bool IsTankFull => currentAmountOfFuel >= requiredAmountOfFuel;
+    public bool IsOxygenEmpty => currentOxygenTime > 0;
+    public bool AllCrewOnShip => shipMembers.Count == aliveCrewNumber;
     private WaitForSeconds oxygenUpdatePeriod;
 
     private void CheckShipMember(ShipMember shipMember)
@@ -30,38 +37,47 @@ public class ShipManager : MonoBehaviour
     [ContextMenu("LetShipMemberIn")]
     private void LetShipMemberIn()
     {
-        if (IsTankFull)
-        {
-            // we just stay at ship ready to fly off the planet
-            shipMembers.Add(_shipMemberAtTheDoors);
-            PlanetEventsBus.ShipMemberComingToShip?.Invoke();
-        }
-        else
+        if (!_shipMemberAtTheDoors)
+            return;
+        
+        if (!IsTankFull)
         {
             if (_shipMemberAtTheDoors.IsFinalInfectionStage)
             {
                 // we let the fully infected ship member in. He starts to break things and wastes fuel tank
                 ShipEventsBus.RemoveFuel?.Invoke();
                 ClipEventsBus.LettingInfectedShipMemberIn?.Invoke();
-                Debug.Log("Let in infected");
                 KillShipMember();
             }
             else
             {
                 ShipEventsBus.AddFuel?.Invoke();
                 ClipEventsBus.LettingShipMemberIn?.Invoke();
-                Debug.Log("Let in normal");
-                _shipMemberAtTheDoors.gameObject.SetActive(false);
-                PlanetEventsBus.ShipMemberGoingGathering?.Invoke(_shipMemberAtTheDoors);
+
+                if (!IsTankFull)
+                {
+                    _shipMemberAtTheDoors.gameObject.SetActive(false);
+                    PlanetEventsBus.ShipMemberGoingGathering?.Invoke(_shipMemberAtTheDoors);
+                }
             }
         }
         
-        _shipMemberAtTheDoors = null;
+        if (IsTankFull)
+        {
+            // we just stay at ship ready to fly off the planet
+            shipMembers.Add(_shipMemberAtTheDoors);
+            _shipMemberAtTheDoors.gameObject.SetActive(false);
+            _shipMemberAtTheDoors = null;
+            PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+        }
     }
 
     [ContextMenu("KillShipMember")]
     private void KillShipMember()
     {
+        if (!_shipMemberAtTheDoors)
+            return;
+
         if(_shipMemberAtTheDoors.IsInfected)
         {
             ShipEventsBus.ShowInjectionsNumberOnUI?.Invoke(++injectionsNumber);
@@ -69,7 +85,23 @@ public class ShipManager : MonoBehaviour
 
         _shipMemberAtTheDoors.gameObject.SetActive(false);
         ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(--aliveCrewNumber);
-        ClipEventsBus.BurningShipMember?.Invoke();
+
+        if (aliveCrewNumber <= 0 && !IsTankFull)
+        { 
+            ClipEventsBus.RunningAloneEnding?.Invoke();
+        }
+        else
+        {
+            if (_shipMemberAtTheDoors.shipMemberProfile.sex == ShipMemberSex.Male)
+                audioSource.clip = manBurnSound;
+            else
+                audioSource.clip = womanBurnSound;
+            audioSource.Play();
+            if (_shipMemberAtTheDoors.IsInfected)
+                ClipEventsBus.BurnedInfectedMember?.Invoke();
+            else
+                ClipEventsBus.BurnedNormalMember?.Invoke();
+        }
     }
     private void HealShipMember()
     {
@@ -83,6 +115,8 @@ public class ShipManager : MonoBehaviour
     {
         StartCoroutine(StartTimerCoroutine());
 
+        aliveCrewNumber = shipMembers.Count;
+        ShipEventsBus.ShowAliveCrewNumberOnUI?.Invoke(aliveCrewNumber);
         foreach (var shipMember in shipMembers)
         {
             shipMember.gameObject.SetActive(false);
@@ -104,7 +138,20 @@ public class ShipManager : MonoBehaviour
             ShipEventsBus.OxygenAmountUpdated?.Invoke(--currentOxygenTime / maxOxygenTime);
         }
 
-        ShipEventsBus.OxygenHasRunOut?.Invoke();
+        if (_shipMemberAtTheDoors)
+        {
+            _shipMemberAtTheDoors.gameObject.SetActive(false);
+        }
+        ClipEventsBus.RunningNoOxygenEnding?.Invoke();
+    }
+
+    private void StopGame()
+    {
+        StopAllCoroutines();
+        if (_shipMemberAtTheDoors)
+        {
+            _shipMemberAtTheDoors.gameObject.SetActive(false);
+        }
     }
 
     void RemoveFuel()
@@ -121,11 +168,6 @@ public class ShipManager : MonoBehaviour
             return;
 
         currentAmountOfFuel++;
-        if(IsTankFull)
-        {
-            Debug.Log("FuelBecameFull");
-            ShipEventsBus.FuelBecameFull?.Invoke(shipMembers.Count == aliveCrewNumber);
-        }
         ShipEventsBus.FuelAmountUpdated?.Invoke(currentAmountOfFuel / requiredAmountOfFuel);
     }
     void OnEnable()
@@ -137,6 +179,7 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.HealingShipMember += HealShipMember;
         GameEventsBus.ShipMembersGoingGathering += SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack += CheckShipMember;
+        GameEventsBus.FlyingOff += StopGame;
     }
     void OnDisable()
     {
@@ -147,5 +190,6 @@ public class ShipManager : MonoBehaviour
         ShipEventsBus.HealingShipMember -= HealShipMember;
         GameEventsBus.ShipMembersGoingGathering -= SendAllShipMembers;
         PlanetEventsBus.ShipMemberSentBack -= CheckShipMember;
+        GameEventsBus.FlyingOff -= StopGame;
     }
 }

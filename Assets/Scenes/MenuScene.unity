@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: -4588141277307187508, guid: 39a96f28bef62430e856955faac62252, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: 1129207797788204421, guid: 411f92ca054a74161bb3a42920eaad2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: 1248301920996441117, guid: c9b3ad86ae3de4497bdb3d45fb3fcc04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5106396533832540882, guid: 34c771e52ebd14748a8d8a883c126914, type: 3}
+  m_Sprite: {fileID: 7799591456205831659, guid: 6fbb0363657ba4dacb343ae55cdd0014, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1309,7 +1309,6 @@ GameObject:
   - component: {fileID: 706675712}
   - component: {fileID: 706675711}
   - component: {fileID: 706675710}
-  - component: {fileID: 706675709}
   m_Layer: 5
   m_Name: DevButton (1)
   m_TagString: Untagged
@@ -1336,18 +1335,6 @@ RectTransform:
   m_AnchoredPosition: {x: 83.23999, y: -189}
   m_SizeDelta: {x: 98.03, y: 35.04}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &706675709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706675707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7f7eb61fbaf474490b6f5b8daa2ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &706675710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,7 +1378,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 706675711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1042108853}
+        m_TargetAssemblyTypeName: AuthorsClipButton, Assembly-CSharp
+        m_MethodName: StopClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &706675711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,7 +2141,7 @@ GameObject:
   - component: {fileID: 1042108852}
   - component: {fileID: 1042108851}
   - component: {fileID: 1042108850}
-  - component: {fileID: 1042108849}
+  - component: {fileID: 1042108853}
   m_Layer: 5
   m_Name: DevButton
   m_TagString: Untagged
@@ -2169,18 +2168,6 @@ RectTransform:
   m_AnchoredPosition: {x: 83.23999, y: -96}
   m_SizeDelta: {x: 98.03, y: 35.04}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1042108849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042108847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7f7eb61fbaf474490b6f5b8daa2ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1042108850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,7 +2211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1042108851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1042108853}
+        m_TargetAssemblyTypeName: AuthorsClipButton, Assembly-CSharp
+        m_MethodName: StartClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1042108851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,6 +2262,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042108847}
   m_CullTransparentMesh: 1
+--- !u!114 &1042108853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042108847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369b0751094d4f1fb4b67c9375594e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  authorsClip: {fileID: 2041904062}
 --- !u!1 &1236333233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,7 +2332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: -1499900109277536864, guid: 6a843fa93f05149f1b6f2b4262907b12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2395,7 +2407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: 1563395752623910796, guid: ac610b11d91ee4b6890182706fa370ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2988,7 +3000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name Name
+  m_text: 'Iurii Skachkov
 
     QA'
   m_isRightToLeft: 0
@@ -3751,7 +3763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2279782638394876534, guid: 5c1c87c7ee54244d6922e0f6ed30a2ae, type: 3}
+  m_Sprite: {fileID: -2479786626458476681, guid: 52f6dcdf2b8b74042ad50106cf424377, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

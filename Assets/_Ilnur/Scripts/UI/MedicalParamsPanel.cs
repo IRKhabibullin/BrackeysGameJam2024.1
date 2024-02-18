@@ -6,12 +6,18 @@ public class MedicalParamsPanel : MonoBehaviour
 {
     [SerializeField] private Toggle pulseSwitch;
     [SerializeField] private TextMeshProUGUI pulseValue;
+    [SerializeField] private AudioSource pulseOnAudio;
+    [SerializeField] private AudioSource pulseOffAudio;
     
     [SerializeField] private Toggle pressureSwitch;
     [SerializeField] private TextMeshProUGUI pressureValue;
+    [SerializeField] private AudioSource pressureOnAudio;
+    [SerializeField] private AudioSource pressureOffAudio;
     
     [SerializeField] private Toggle temperatureSwitch;
     [SerializeField] private TextMeshProUGUI temperatureValue;
+    [SerializeField] private AudioSource temperatureOnAudio;
+    [SerializeField] private AudioSource temperatureOffAudio;
 
     private ModifiedMedParams _shipMemberMedParams;
 
@@ -60,6 +66,8 @@ public class MedicalParamsPanel : MonoBehaviour
     private void TogglePulseSwitch(bool switchValue)
     {
         pulseValue.SetText(switchValue && _shipMemberMedParams != null ? _shipMemberMedParams.heartBeat.ToString() : "");
+        (switchValue? pulseOnAudio : pulseOffAudio).Play();
+        (switchValue? pulseOffAudio : pulseOnAudio).Stop();
     }
 
     private void TogglePressureSwitch(bool switchValue)
@@ -67,10 +75,14 @@ public class MedicalParamsPanel : MonoBehaviour
         pressureValue.SetText(switchValue && _shipMemberMedParams != null
             ? $"{_shipMemberMedParams.bloodPressure.upper}/{_shipMemberMedParams.bloodPressure.bottom}"
             : "");
+        (switchValue? pressureOnAudio : pressureOffAudio).Play();
+        (switchValue? pressureOffAudio : pressureOnAudio).Stop();
     }
 
     private void ToggleTemperatureSwitch(bool switchValue)
     {
         temperatureValue.SetText(switchValue && _shipMemberMedParams != null ? _shipMemberMedParams.temperature.ToString("F1") : "");
+        (switchValue? temperatureOnAudio : temperatureOffAudio).Play();
+        (switchValue? temperatureOffAudio : temperatureOnAudio).Stop();
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3c31683bfcf84d4a8db6fc1763ddb5d, type: 3}
-  m_Name: ManRenHead 4
+  m_Name: ManHeadIurii
   m_EditorClassIdentifier: 
-  healthy: {fileID: -5303834241878338220, guid: 17a70dfdf1b494c5d86914ec15d8f401, type: 3}
-  damaged: {fileID: -5303834241878338220, guid: 1aee7944a30ed4c938520dfafc7fa0e4, type: 3}
+  healthy: {fileID: -2363843493809240126, guid: 5a7db5c2860285c469fc77e52aefe80b, type: 3}
+  damaged: {fileID: 3521623882308795371, guid: b883af6445028e64c853eaf60a1ab5cd, type: 3}
   xRay: {fileID: -1459259881431116076, guid: 1cd662c508f576d4fb40400c48a83b00, type: 3}
   xRayInfected: {fileID: -4956513515943211176, guid: 77d601ac4135cd74785b5335d95f0876, type: 3}

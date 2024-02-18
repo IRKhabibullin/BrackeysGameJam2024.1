@@ -9,10 +9,8 @@ public static class ShipEventsBus
     public static Action AddFuel;
 
     public static Action<float> OxygenAmountUpdated;  // in %
-    public static Action OxygenHasRunOut;
     
     public static Action<float> FuelAmountUpdated;  // in %
-    public static Action<bool> FuelBecameFull;  // bool = isAllShipMembers on the ship
 
     // Events from UI
     public static Action LettingShipMemberIn;

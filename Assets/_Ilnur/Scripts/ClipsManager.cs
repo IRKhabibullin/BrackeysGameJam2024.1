@@ -4,6 +4,13 @@ public class ClipsManager : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _container;
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip goodEndingClip;
+    [SerializeField] private AudioClip egoistEndingClip;
+    [SerializeField] private AudioClip alienEndingClip;
+    [SerializeField] private AudioClip noOxygenEndingClip;
+    [SerializeField] private AudioClip aloneEndingClip;
 
     #region Intro
     private void RunIntro()
@@ -14,7 +21,7 @@ public class ClipsManager : MonoBehaviour
 
     private void FinishIntro()
     {
-        _container.SetActive(false);
+        DisableClip();
         GameEventsBus.ShipMembersGoingGathering?.Invoke();
     }
     #endregion
@@ -46,15 +53,61 @@ public class ClipsManager : MonoBehaviour
     #endregion
 
     #region RunBurningShipMember
-    private void RunBurningShipMember()
+    private void RunBurnedNormalMember()
     {
         _container.SetActive(true);
-        _animator.SetTrigger("RunBurningShipMember");
+        _animator.SetTrigger("RunBurnedNormalMember");
+    }
+
+    private void RunBurnedInfectedMember()
+    {
+        _container.SetActive(true);
+        _animator.SetTrigger("RunBurnedInfectedMember");
     }
 
     private void FinishBurningShipMember()
     {
         PlanetEventsBus.ShipMemberComingToShip?.Invoke();
+    }
+
+    private void RunGoodEnding()
+    {
+        audioSource.clip = goodEndingClip;
+        _container.SetActive(true);
+        _animator.SetTrigger("RunGoodEnding");
+    }
+
+    private void RunEgoistEnding()
+    {
+        audioSource.clip = egoistEndingClip;
+        _container.SetActive(true);
+        _animator.SetTrigger("RunEgoistEnding");
+    }
+
+    private void RunAlienEnding()
+    {
+        audioSource.clip = alienEndingClip;
+        _container.SetActive(true);
+        _animator.SetTrigger("RunAlienEnding");
+    }
+
+    private void RunNoOxygenEnding()
+    {
+        audioSource.clip = noOxygenEndingClip;
+        _container.SetActive(true);
+        _animator.SetTrigger("RunNoOxygenEnding");
+    }
+
+    private void RunAloneEnding()
+    {
+        audioSource.clip = aloneEndingClip;
+        _container.SetActive(true);
+        _animator.SetTrigger("RunAloneEnding");
+    }
+
+    private void CallFinishGame()
+    {
+        GameEventsBus.CallingFinishGame?.Invoke();
     }
 
     private void DisableClip()
@@ -68,7 +121,13 @@ public class ClipsManager : MonoBehaviour
         ClipEventsBus.RunningIntro += RunIntro;
         ClipEventsBus.LettingInfectedShipMemberIn += RunLettingInfectedShipMemberIn;
         ClipEventsBus.LettingShipMemberIn += RunLettingShipMemberIn;
-        ClipEventsBus.BurningShipMember += RunBurningShipMember;
+        ClipEventsBus.BurnedNormalMember += RunBurnedNormalMember;
+        ClipEventsBus.BurnedInfectedMember += RunBurnedInfectedMember;
+
+        ClipEventsBus.RunningGoodEnding += RunGoodEnding;
+        ClipEventsBus.RunningEgoistEnding += RunEgoistEnding;
+        ClipEventsBus.RunningNoOxygenEnding += RunNoOxygenEnding;
+        ClipEventsBus.RunningAloneEnding += RunAloneEnding;
     }
 
     private void OnDisable()
@@ -76,6 +135,12 @@ public class ClipsManager : MonoBehaviour
         ClipEventsBus.RunningIntro -= RunIntro;
         ClipEventsBus.LettingInfectedShipMemberIn -= RunLettingInfectedShipMemberIn;
         ClipEventsBus.LettingShipMemberIn -= RunLettingShipMemberIn;
-        ClipEventsBus.BurningShipMember -= RunBurningShipMember;
+        ClipEventsBus.BurnedNormalMember -= RunBurnedNormalMember;
+        ClipEventsBus.BurnedInfectedMember -= RunBurnedInfectedMember;
+        
+        ClipEventsBus.RunningGoodEnding -= RunGoodEnding;
+        ClipEventsBus.RunningEgoistEnding -= RunEgoistEnding;
+        ClipEventsBus.RunningNoOxygenEnding -= RunNoOxygenEnding;
+        ClipEventsBus.RunningAloneEnding -= RunAloneEnding;
     }
 }
