@@ -25,7 +25,6 @@ public class ShipManager : MonoBehaviour
         _shipMemberAtTheDoors.gameObject.SetActive(true);
         
         ShipEventsBus.ShowShipMemberProfileOnUI?.Invoke(shipMember.shipMemberProfile);
-        ShipEventsBus.RefreshAliveCrewOnUI?.Invoke(aliveCrewNumber);
     }
 
     [ContextMenu("LetShipMemberIn")]

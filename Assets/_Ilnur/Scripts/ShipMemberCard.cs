@@ -56,11 +56,11 @@ public class ShipMemberCard : MonoBehaviour
     private void OnEnable()
     {
         ShipEventsBus.ShowShipMemberProfileOnUI += RefreshProfile;
-        ShipEventsBus.RefreshAliveCrewOnUI += RefreshCrewStatus;
+        ShipEventsBus.ShowAliveCrewNumberOnUI += RefreshCrewStatus;
     }
     private void OnDisable()
     {
         ShipEventsBus.ShowShipMemberProfileOnUI -= RefreshProfile;
-        ShipEventsBus.RefreshAliveCrewOnUI -= RefreshCrewStatus;
+        ShipEventsBus.ShowAliveCrewNumberOnUI -= RefreshCrewStatus;
     }
 }

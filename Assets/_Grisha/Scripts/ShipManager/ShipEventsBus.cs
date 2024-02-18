@@ -25,5 +25,4 @@ public static class ShipEventsBus
     public static Action<SO_ShipMemberProfile> ShowShipMemberProfileOnUI;
     public static Action<int> ShowAliveCrewNumberOnUI;
     public static Action<int> ShowInjectionsNumberOnUI;
-    public static Action<int> RefreshAliveCrewOnUI;
 }
