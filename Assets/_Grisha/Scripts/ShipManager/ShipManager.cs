@@ -10,7 +10,7 @@ public class ShipManager : MonoBehaviour
     [SerializeField] int requiredAmountOfFuel = 10;
     [SerializeField] float currentAmountOfFuel;
     public List<ShipMember> shipMembers;
-    private int aliveCrewNumber;
+    private int aliveCrewNumber = 7;
 
     private int injectionsNumber = 0;
 
@@ -25,6 +25,7 @@ public class ShipManager : MonoBehaviour
         _shipMemberAtTheDoors.gameObject.SetActive(true);
         
         ShipEventsBus.ShowShipMemberProfileOnUI?.Invoke(shipMember.shipMemberProfile);
+        ShipEventsBus.RefreshAliveCrewOnUI?.Invoke(aliveCrewNumber);
     }
 
     [ContextMenu("LetShipMemberIn")]
